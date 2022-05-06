@@ -1,1 +1,1 @@
-<a href="index.html"><img src="/assets/img/logo-dark.png" alt="Klorofil Logo" class="text-center img-responsive logo"></a>
+<a href="index.html"><img src="/278926471_1076614489588166_2204792053667554717_n.png" alt="Klorofil Logo" class="text-center img-responsive logo" style="object-fit:cover;object-position:center;height:100px;width:150px;"></a>
