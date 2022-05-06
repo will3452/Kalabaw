@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\Announcement\Entities\Announcement;
 use Modules\Farmer\Entities\Farmer;
+use Modules\Fishermen\Entities\Fishermen;
 
 class AnnouncementController extends Controller
 {
@@ -80,9 +81,20 @@ class AnnouncementController extends Controller
         }
         $data = $request->validate($fieldsToValidate);
         Announcement::create($data);
-        $farmers = Farmer::get(['contact_no']);
-        foreach ($farmers as $f) {
-            $this->sendMessage($f->contact_no, $request->message);
+        $mobile = [];
+
+        if ($data['for'] == 'farmers') {
+            $mobile = Farmer::get(['contact_no'])->pluck('contact_no');
+        } else if ($data['for'] == 'fishermen') {
+            $mobile = Fishermen::get(['contact_no'])->pluck('contact_no');
+        } else {
+            $farmers = Farmer::get(['contact_no'])->pluck('contact_no');
+            $fishermen = Fishermen::get(['contact_no'])->pluck('contact_no');
+            $raw = array_merge($farmers, $fishermen);
+            $mobile = array_unique($raw);
+        }
+        foreach ($mobile as $f) {
+            $this->sendMessage($f, $request->message);
         }
         return back()->withSuccess('Announcement has been broadcast!');
     }

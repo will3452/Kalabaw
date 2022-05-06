@@ -13,10 +13,12 @@ class Announcement extends Model
     protected $fillable = [
         'message',
         'user_id',
+        'for',
     ];
     const _COLUMNS = [
         'message',
         'user_id',
+        'for',
     ];
 
     const _TYPE = [
@@ -24,6 +26,15 @@ class Announcement extends Model
     ];
 
     const _SELECT = [
+        'for',
+    ];
+
+    const _OPTIONS = [
+        'for' => [
+            'all' => 'all',
+            'farmers' => 'farmers',
+            'fishermen' => 'fishermen',
+        ],
     ];
 
     const _CHECKBOX = [];
