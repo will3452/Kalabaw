@@ -1,8 +1,5 @@
 <x-auth-layout>
-    <div class="header">
-        <p class="lead">Register</p>
-    </div>
-    <form class="form-auth-small" action="{{route('auth.register')}}" method="POST">
+    <form  action="{{route('auth.register')}}" method="POST">
         @csrf
         <x-form.input name="first_name" type="text" label="First Name" />
         <x-form.input name="last_name" type="text" label="Last Name" />
