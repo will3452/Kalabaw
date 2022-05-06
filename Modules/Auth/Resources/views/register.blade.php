@@ -1,6 +1,5 @@
 <x-auth-layout>
     <div class="header">
-        <div class="logo text-center"><img src="/assets/img/logo-dark.png" alt="Logo here"></div>
         <p class="lead">Register</p>
     </div>
     <form class="form-auth-small" action="{{route('auth.register')}}" method="POST">
