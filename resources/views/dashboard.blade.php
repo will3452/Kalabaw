@@ -29,7 +29,7 @@
                     <div class="metric">
                         <span class="icon"><i class="fa fa-ship"></i></span>
                         <p>
-                            <span class="number">274,678</span>
+                            <span class="number">{{ \Modules\Fishermen\Entities\Fishermen::count() }}</span>
                             <span class="title">Fishermen</span>
                         </p>
                     </div>
