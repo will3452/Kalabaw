@@ -1,0 +1,13 @@
+{
+    "name": "MapTag",
+    "alias": "maptag",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\MapTag\\Providers\\MapTagServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

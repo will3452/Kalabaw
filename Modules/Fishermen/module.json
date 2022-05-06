@@ -1,0 +1,13 @@
+{
+    "name": "Fishermen",
+    "alias": "fishermen",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Fishermen\\Providers\\FishermenServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

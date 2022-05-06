@@ -1,0 +1,81 @@
+<!-- LEFT SIDEBAR -->
+<div id="sidebar-nav" class="sidebar">
+    <div class="sidebar-scroll">
+        <nav>
+            <ul class="nav">
+
+                <x-dashboard.sidebar-link icon="lnr lnr-home" href="{{route('home')}}" active="{{isActive(route('home'))}}">
+                    Dashboard
+                </x-dashboard.sidebar-link>
+
+
+
+                @if (auth()->user()->type === \App\Models\User::TYPE_ADMIN)
+                    <x-dashboard.sidebar-link icon="lnr lnr-users" href="{{route('usermanagement.index')}}" active="{{isActive(route('usermanagement.index'))}}">
+                        Users Management
+                    </x-dashboard.sidebar-link>
+
+                @if (hasModule('Barangay'))
+                    <x-dashboard.sidebar-link href="{{route('barangay.index')}}" icon="lnr lnr-location" active="{{isActive(route('barangay.index'))}}">
+                        Barangay Management
+                    </x-dashboard.sidebar-link>
+                @endif
+
+                @endif
+
+                @if (hasModule('MapTag'))
+                    <x-dashboard.sidebar-link href="{{route('maptag.index')}}" icon="lnr lnr-map" active="{{isActive(route('maptag.index'))}}">
+                        Map
+                    </x-dashboard.sidebar-link>
+                @endif
+
+                @if (hasModule('Farmer') && auth()->user()->type !== \App\Models\User::TYPE_ADMIN)
+                    <li>
+                        <a href="#farmers" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Farmers</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                        <div id="farmers" class="collapse ">
+                            <ul class="nav ">
+                                <li><a href="{{route('farmer.index')}}">Accounts</a></li>
+                                <li><a href="{{route('crop.index')}}">Crops</a></li>
+                                <li><a href="{{route('mae.index')}}">Machineries and Equipment</a></li>
+                                <li><a href="{{route('tree.index')}}">Trees</a></li>
+                                <li><a href="{{route('lop.index')}}">Livestock or Poultry</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
+
+                @if (hasModule('Fishermen') && auth()->user()->type !== \App\Models\User::TYPE_ADMIN)
+                    <li>
+                        <a href="#fishermens" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Fishermen</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                        <div id="fishermens" class="collapse ">
+                            <ul class="nav ">
+                                <li><a href="{{route('fishermen.index')}}">Accounts</a></li>
+                                <li><a href="{{route('area.index')}}">Areas</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
+
+                @if (hasModule('Inventory'))
+                    <li>
+                        <a href="#inventory" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Inventories</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                        <div id="inventory" class="collapse ">
+                            <ul class="nav ">
+                                <li><a href="{{route('item.index')}}">Items</a></li>
+                                <li><a href="{{route('inventory.index')}}">Add Inventory</a></li>
+                                <li><a href="{{route('unit.index')}}">Unit of measurements</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
+
+                @if (hasModule('MapTag'))
+                    <x-dashboard.sidebar-link href="{{route('announcement.index')}}" icon="lnr lnr-bullhorn" active="{{isActive(route('announcement.index'))}}">
+                        Announcements
+                    </x-dashboard.sidebar-link>
+                @endif
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- END LEFT SIDEBAR -->

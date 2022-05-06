@@ -1,0 +1,13 @@
+{
+    "name": "Barangay",
+    "alias": "barangay",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Barangay\\Providers\\BarangayServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

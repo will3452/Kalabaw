@@ -1,0 +1,11 @@
+{
+    "UserManagement": true,
+    "Auth": true,
+    "Farmer": true,
+    "Barangay": true,
+    "MapTag": true,
+    "Announcement": true,
+    "Profile": true,
+    "Inventory": true,
+    "Fishermen": true
+}
