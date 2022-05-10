@@ -11,6 +11,7 @@
             <br/>
 
             <button class="btn btn-danger" onclick="(()=>{window.location.reload()})()">reset bounds</button>
+            <button class="btn btn-primary" onclick="changeMapStyle()">Change Map Style</button>
             <button class="btn btn-success" onclick="save()">save</button>
         </div>
     @else
@@ -36,15 +37,26 @@
         var map = L.map('map').setView([{{getLat($model->location())}}, {{getLng($model->location())}}], 18);
         let area = [];
         var color = '#000';
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        var isStreet = true;
+        var config = {
                 attribution: '',
                 maxZoom: 42,
                 id: 'mapbox/streets-v11',
                 tileSize: 512,
                 zoomOffset: -1,
                 accessToken: 'pk.eyJ1IjoiZWxlemVya3ciLCJhIjoiY2wxNHE4d2E5MHRvMTNkczA1anltY3lybSJ9.T2bcLRSnEZB_LNGM7Qs5Mw'
-            }).addTo(map);
+            };
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', config).addTo(map);
             var polygon = null;
+
+            function changeMapStyle () {
+                if (isStreet) {
+                    config.id = 'mapbox/satellite-v9';
+                } else {
+                    config.id = 'mapbox/streets-v11';
+                }
+                isStreet = !isStreet;
+            }
 
             //exising tags rendering
             @foreach($tags as $tag)
