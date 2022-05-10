@@ -11,7 +11,7 @@
             <br/>
 
             <button class="btn btn-danger" onclick="(()=>{window.location.reload()})()">reset bounds</button>
-            <a class="btn btn-primary" onclick="" href="/maptag/create?edit={{request()->edit}}&id={{request()->id}}&type={{request()->type}}&module={{request()->module}}&{{is_null(request()->mapstyle) ? 'mapstyle=satellite-v9' : 'mapstyle=streets-v11'}}">Change Map Style</a>
+            <a class="btn btn-primary" onclick="" href="/maptag/create?edit={{request()->edit}}&id={{request()->id}}&type={{request()->type}}&module={{request()->module}}&{{is_null(request()->mapstyle) ? 'mapstyle=satellite-v9' : ''}}">Change Map Style</a>
             <button class="btn btn-success" onclick="save()">save</button>
         </div>
     @else
