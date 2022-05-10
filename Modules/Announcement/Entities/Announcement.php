@@ -3,12 +3,14 @@
 namespace Modules\Announcement\Entities;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Announcement extends Model
 {
     use HasFactory;
+
 
     protected $fillable = [
         'message',
@@ -36,6 +38,7 @@ class Announcement extends Model
             'fishermen' => 'fishermen',
         ],
     ];
+
 
     const _CHECKBOX = [];
 

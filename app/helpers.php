@@ -131,7 +131,7 @@ if ( ! function_exists('getFieldValue')){
                 $strArr[] = $w;
             }
             $relation = implode("_", $strArr);
-            return $column->getRelation($relation)->title();
+            return optional($column->getRelation($relation))->title();
         }
 
 
