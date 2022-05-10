@@ -44,18 +44,18 @@
                 zoomOffset: -1,
                 accessToken: 'pk.eyJ1IjoiZWxlemVya3ciLCJhIjoiY2wxNHE4d2E5MHRvMTNkczA1anltY3lybSJ9.T2bcLRSnEZB_LNGM7Qs5Mw'
             }).addTo(map);
-        var polygon = null;
+            var polygon = null;
 
             //exising tags rendering
             @foreach($tags as $tag)
                 let tag{{$tag->id}} = L.polygon({{$tag->area}}, {color:'{{$tag->color}}'}).addTo(map);
-                tag{{$tag->id}}.bindPopup('<h5>{{$tag->model->title()}}</h5>').openPopup();
+                tag{{$tag->id}}.bindPopup('<h5>{{optional($tag->model)->title() ?? "---"}}</h5>').openPopup();
             @endforeach
 
             const render = (newarea, color = '#000') => {
                 if (newarea.length == 0) {
                     area = [];
-                    polygon.remove();// this will reset the marker
+                    polygon.remove(); // this will reset the marker
                 }
                 polygon = L.polygon(newarea, {color}).addTo(map);
             }

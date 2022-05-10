@@ -9,4 +9,5 @@
         </p>
         <button type="submit" class="btn btn-primary btn-lg btn-block">click here to request another</button>
     </form>
+    <a href="{{route('auth.logout')}}" lass="btn btn-danger btn-lg btn-block">Logout for now.</a>
 </x-auth-layout>
