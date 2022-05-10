@@ -11,7 +11,7 @@
             <br/>
 
             <button class="btn btn-danger" onclick="(()=>{window.location.reload()})()">reset bounds</button>
-            <button class="btn btn-primary" onclick="changeMapStyle()">Change Map Style</button>
+            <a class="btn btn-primary" onclick="" href="/maptag/create?edit={{request()->edit}}&id={{request()->id}}&type={{request()->type}}&module={{request()->module}}&{{is_null(request()->mapstyle) ? 'mapstyle=satellite-v9' : 'mapstyle=streets-v11'}}">Change Map Style</a>
             <button class="btn btn-success" onclick="save()">save</button>
         </div>
     @else
@@ -39,24 +39,16 @@
         var color = '#000';
         var isStreet = true;
         var config = {
-                attribution: '',
-                maxZoom: 42,
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                accessToken: 'pk.eyJ1IjoiZWxlemVya3ciLCJhIjoiY2wxNHE4d2E5MHRvMTNkczA1anltY3lybSJ9.T2bcLRSnEZB_LNGM7Qs5Mw'
-            };
+            attribution: '',
+            maxZoom: 42,
+            id: `mapbox/{{ request()->mapstyle ?? 'streets-v11' }}`,
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoiZWxlemVya3ciLCJhIjoiY2wxNHE4d2E5MHRvMTNkczA1anltY3lybSJ9.T2bcLRSnEZB_LNGM7Qs5Mw'
+        };
+
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', config).addTo(map);
             var polygon = null;
-
-            function changeMapStyle () {
-                if (isStreet) {
-                    config.id = 'mapbox/satellite-v9';
-                } else {
-                    config.id = 'mapbox/streets-v11';
-                }
-                isStreet = !isStreet;
-            }
 
             //exising tags rendering
             @foreach($tags as $tag)
