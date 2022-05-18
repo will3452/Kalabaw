@@ -11,6 +11,7 @@ class Crop extends Model
     use HasFactory, MapTagTrait;
 
     protected $fillable = [
+        'farmer_id',
         'farm_location',
         'total_farm_area',
         'tenure_type',
@@ -19,7 +20,6 @@ class Crop extends Model
         'size',
         'organically_grown',
         'source_of_water',
-        'farmer_id',
     ];
 
     const _COLUMNS = [

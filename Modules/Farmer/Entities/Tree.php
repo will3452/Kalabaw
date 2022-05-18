@@ -8,20 +8,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Tree extends Model
 {
     use HasFactory;
-
     protected $fillable = [
+        'farmer_id',
         'kind',
         'number_of_trees',
         'number_of_months',
         'remarks',
-        'farmer_id',
+        'records_of_production',
     ];
     const _COLUMNS = [
+        'farmer_id',
         'kind',
         'number_of_trees',
         'number_of_months',
         'remarks',
-        'farmer_id',
+        'records_of_production',
     ];
 
     const _TYPE = [
@@ -29,8 +30,16 @@ class Tree extends Model
         'number_of_trees' => 'number',
     ];
 
+    const _OPTIONS = [
+        'remarks' => [
+            'Bearing' => 'Bearing',
+            'Non-Bearing' => 'Non-Bearing',
+        ],
+    ];
+
     const _SELECT = [
         'farmer_id',
+        'remarks',
     ];
 
     const _CHECKBOX = [];

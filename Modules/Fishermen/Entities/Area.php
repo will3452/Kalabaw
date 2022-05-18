@@ -11,12 +11,13 @@ class Area extends Model
     use HasFactory, MapTagTrait;
 
     protected $fillable = [
+        'fishermen_id',
         'fish_cage_sq_dot_m',
         'fish_cage_number',
         'fish_pond_sq_dot_m',
         'fish_pond_owner',
+        'fish_pond_number',
         'fishermen_using_nets',
-        'fishermen_id',
         'barangay',
         'name_of_river',
     ];
@@ -25,6 +26,7 @@ class Area extends Model
         'fish_cage_number',
         'fish_pond_sq_dot_m',
         'fish_pond_owner',
+        'fish_pond_number',
         'fishermen_using_nets',
         'fishermen_id',
         'barangay',
@@ -35,6 +37,7 @@ class Area extends Model
         'fish_cage_number' => 'number',
         'fish_cage_sq_dot_m' => 'number',
         'fish_pond_sq_dot_m' => 'number',
+        'fish_pond_number' => 'number',
     ];
 
     const _SELECT = [

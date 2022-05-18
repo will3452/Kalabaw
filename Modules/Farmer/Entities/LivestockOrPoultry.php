@@ -10,10 +10,10 @@ class LivestockOrPoultry extends Model
     use HasFactory;
 
     protected $fillable = [
+        'farmer_id',
         'type',
         'number_of_heads_(male)',
         'number_of_heads_(female)',
-        'farmer_id',
     ];
     const _COLUMNS = [
         'type',

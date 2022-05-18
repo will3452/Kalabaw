@@ -1,5 +1,8 @@
 <x-dashboard.layout>
-    <x-panel title="Register trees">
+    <x-panel title="Register tree">
+        <div class="alert alert-warning">
+            Put <b>N/A</b> if the field isn't applicable/available.
+        </div>
         <form action="{{route('tree.store')}}" method="POST">
             @csrf
             @foreach ($columns as $c)

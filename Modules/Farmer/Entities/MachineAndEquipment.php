@@ -10,10 +10,10 @@ class MachineAndEquipment extends Model
     use HasFactory;
 
     protected $fillable = [
+        'farmer_id',
         'type',
         'number_of_units',
         'year_acquired',
-        'farmer_id',
     ];
 
     const _COLUMNS = [
