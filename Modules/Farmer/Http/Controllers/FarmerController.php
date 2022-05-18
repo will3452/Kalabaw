@@ -56,7 +56,10 @@ class FarmerController extends Controller
         $fields = $this->getColumns();
         $fieldsToValidate = [];
         foreach ($fields as $value) {
-            $fieldsToValidate[$value] = 'required';
+            $fieldsToValidate[$value] = ['required'];
+            if ($value == 'contact_no') { // validation dedicated for contact number
+                array_push($fieldsToValidate[$value], 'max:11');
+            }
         }
         $data = $request->validate($fieldsToValidate);
         Farmer::create($data);

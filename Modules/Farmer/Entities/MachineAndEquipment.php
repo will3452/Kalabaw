@@ -17,10 +17,10 @@ class MachineAndEquipment extends Model
     ];
 
     const _COLUMNS = [
+        'farmer_id',
         'type',
         'number_of_units',
         'year_acquired',
-        'farmer_id',
     ];
 
     const _TYPE = [

@@ -16,10 +16,10 @@ class LivestockOrPoultry extends Model
         'number_of_heads_(female)',
     ];
     const _COLUMNS = [
+        'farmer_id',
         'type',
         'number_of_heads_(male)',
         'number_of_heads_(female)',
-        'farmer_id',
     ];
 
     const _TYPE = [

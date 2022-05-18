@@ -15,7 +15,9 @@ class Crop extends Model
         'farm_location',
         'total_farm_area',
         'tenure_type',
-        'name_of_land_owner',
+        'land_owner_last_name',
+        'land_owner_fist_name',
+        'land_owner_last_name',
         'crop_or_commodities',
         'size',
         'organically_grown',
@@ -23,15 +25,17 @@ class Crop extends Model
     ];
 
     const _COLUMNS = [
+        'farmer_id',
         'farm_location',
         'total_farm_area',
         'tenure_type',
-        'name_of_land_owner',
+        'land_owner_last_name',
+        'land_owner_fist_name',
+        'land_owner_last_name',
         'crop_or_commodities',
         'size',
         'organically_grown',
         'source_of_water',
-        'farmer_id',
     ];
 
     const _EXCLUDE_TO_FORM = [];

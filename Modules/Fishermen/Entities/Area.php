@@ -20,17 +20,32 @@ class Area extends Model
         'fishermen_using_nets',
         'barangay',
         'name_of_river',
+        'north',
+        'south',
+        'east',
+        'west',
     ];
     const _COLUMNS = [
+        'fishermen_id',
         'fish_cage_sq_dot_m',
         'fish_cage_number',
         'fish_pond_sq_dot_m',
         'fish_pond_owner',
         'fish_pond_number',
         'fishermen_using_nets',
-        'fishermen_id',
         'barangay',
         'name_of_river',
+        'north',
+        'south',
+        'east',
+        'west',
+    ];
+
+    const _BOUNDARIES = [
+        'north',
+        'south',
+        'west',
+        'east',
     ];
 
     const _TYPE = [
