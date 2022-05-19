@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('profile')->group(function() {
+Route::prefix('profile')->middleware(['auth'])->group(function() {
     Route::get('/', 'ProfileController@index');
 });

@@ -13,7 +13,7 @@
 
 use Modules\MapTag\Http\Controllers\MapTagController;
 
-Route::prefix('maptag')->name('maptag.')->group(function() {
+Route::prefix('maptag')->name('maptag.')->middleware(['auth'])->group(function() {
     Route::get('/', [MapTagController::class, 'index'])->name('index');
     Route::get('/create', [MapTagController::class, 'create'])->name('create');
 });

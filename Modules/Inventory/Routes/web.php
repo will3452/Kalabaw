@@ -15,7 +15,7 @@ use Modules\Inventory\Http\Controllers\InventoryController;
 use Modules\Inventory\Http\Controllers\ItemsController;
 use Modules\Inventory\Http\Controllers\UnitOfMeasurementController;
 
-Route::prefix('inventory')->name('inventory.')->group(function() {
+Route::prefix('inventory')->name('inventory.')->middleware(['auth'])->group(function() {
     Route::get('/', [InventoryController::class, 'index'])->name('index');
     Route::get('/create', [InventoryController::class, 'create'])->name('create');
     Route::post('/', [InventoryController::class, 'store'])->name('store');

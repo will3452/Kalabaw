@@ -13,7 +13,7 @@
 
 use Modules\Bin\Http\Controllers\BinController;
 
-Route::prefix('bin')->name('bin.')->group(function() {
+Route::prefix('bin')->name('bin.')->middleware(['auth'])->group(function() {
     Route::get('/', [BinController::class, 'index'])->name('index');
     Route::post('/restore', [BinController::class, 'restore'])->name('restore');
 });

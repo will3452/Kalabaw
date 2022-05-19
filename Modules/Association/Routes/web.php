@@ -13,7 +13,7 @@
 
 use Modules\Association\Http\Controllers\AssociationController;
 
-Route::prefix('association')->name('assoc.')->group(function() {
+Route::prefix('association')->name('assoc.')->middleware(['auth'])->group(function() {
     Route::get('/', [AssociationController::class, 'index'])->name('index');
     Route::get('/create', [AssociationController::class, 'create'])->name('create');
     Route::get('/edit/{association}', [AssociationController::class, 'edit'])->name('edit');

@@ -13,7 +13,7 @@
 
 use Modules\Barangay\Http\Controllers\BarangayController;
 
-Route::prefix('barangay')->name('barangay.')->group(function() {
+Route::prefix('barangay')->name('barangay.')->middleware(['auth'])->group(function() {
     Route::get('/', [BarangayController::class, 'index'])->name('index');
     Route::get('/create', [BarangayController::class, 'create'])->name('create');
     Route::post('/', [BarangayController::class, 'store'])->name('store');

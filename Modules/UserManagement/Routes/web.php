@@ -13,7 +13,7 @@
 
 use Modules\UserManagement\Http\Controllers\UserManagementController;
 
-Route::prefix('usermanagement')->name('usermanagement.')->group(function() {
+Route::prefix('usermanagement')->name('usermanagement.')->middleware(['auth'])->group(function() {
     Route::get('/', [UserManagementController::class, 'index'])->name('index');
     Route::post('/', [UserManagementController::class, 'store'])->name('store');
     Route::get('/create', [UserManagementController::class, 'create'])->name('create');

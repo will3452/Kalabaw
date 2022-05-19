@@ -17,7 +17,7 @@ use Modules\Farmer\Http\Controllers\LivestockOrPoultryController;
 use Modules\Farmer\Http\Controllers\MachineAndEquipmentController;
 use Modules\Farmer\Http\Controllers\TreeController;
 
-Route::prefix('farmer')->name('farmer.')->group(function() {
+Route::prefix('farmer')->name('farmer.')->middleware(['auth'])->group(function() {
     Route::get('/printable/{farmer}', [FarmerController::class, 'generatePrintable'])->name('print');
     Route::get('/', [FarmerController::class, 'index'])->name('index');
     Route::get('/create', [FarmerController::class, 'create'])->name('create');
@@ -28,7 +28,7 @@ Route::prefix('farmer')->name('farmer.')->group(function() {
     Route::delete('/{farmer}', [FarmerController::class, 'destroy'])->name('delete');
 });
 
-Route::prefix('crop')->name('crop.')->group(function () {
+Route::prefix('crop')->name('crop.')->middleware(['auth'])->group(function () {
     Route::get('/', [CropController::class, 'index'])->name('index');
     Route::get('/create', [CropController::class, 'create'])->name('create');
     Route::post('/', [CropController::class, 'store'])->name('store');
@@ -37,7 +37,7 @@ Route::prefix('crop')->name('crop.')->group(function () {
     Route::delete('/{crop}', [CropController::class, 'destroy'])->name('delete');
 });
 
-Route::prefix('machine-and-equipment')->name('mae.')->group(function () {
+Route::prefix('machine-and-equipment')->middleware(['auth'])->name('mae.')->group(function () {
     Route::get('/', [MachineAndEquipmentController::class, 'index'])->name('index');
     Route::get('/create', [MachineAndEquipmentController::class, 'create'])->name('create');
     Route::post('/', [MachineAndEquipmentController::class, 'store'])->name('store');
@@ -46,7 +46,7 @@ Route::prefix('machine-and-equipment')->name('mae.')->group(function () {
     Route::delete('/{mae}', [MachineAndEquipmentController::class, 'destroy'])->name('delete');
 });
 
-Route::prefix('tree')->name('tree.')->group(function () {
+Route::prefix('tree')->name('tree.')->middleware(['auth'])->group(function () {
     Route::get('/', [TreeController::class, 'index'])->name('index');
     Route::get('/create', [TreeController::class, 'create'])->name('create');
     Route::post('/', [TreeController::class, 'store'])->name('store');
@@ -55,7 +55,7 @@ Route::prefix('tree')->name('tree.')->group(function () {
     Route::delete('/{tree}', [TreeController::class, 'destroy'])->name('delete');
 });
 
-Route::prefix('livestock-or-poultry')->name('lop.')->group(function () {
+Route::prefix('livestock-or-poultry')->middleware(['auth'])->name('lop.')->group(function () {
     Route::get('/', [LivestockOrPoultryController::class, 'index'])->name('index');
     Route::get('/create', [LivestockOrPoultryController::class, 'create'])->name('create');
     Route::post('/', [LivestockOrPoultryController::class, 'store'])->name('store');

@@ -14,7 +14,7 @@
 use Modules\Fishermen\Http\Controllers\AreaController;
 use Modules\Fishermen\Http\Controllers\FishermenController;
 
-Route::prefix('fishermens')->name('fishermen.')->group(function() {
+Route::prefix('fishermens')->name('fishermen.')->middleware(['auth'])->group(function() {
     Route::get('/', [FishermenController::class, 'index'])->name('index');
     Route::get('/create', [FishermenController::class, 'create'])->name('create');
     Route::post('/', [FishermenController::class, 'store'])->name('store');
@@ -24,7 +24,7 @@ Route::prefix('fishermens')->name('fishermen.')->group(function() {
     Route::delete('/{fishermen}', [FishermenController::class, 'destroy'])->name('delete');
 });
 
-Route::prefix('fishermen-area')->name('area.')->group(function() {
+Route::prefix('fishermen-area')->name('area.')->middleware(['auth'])->group(function() {
     Route::get('/', [AreaController::class, 'index'])->name('index');
     Route::get('/create', [AreaController::class, 'create'])->name('create');
     Route::post('/', [AreaController::class, 'store'])->name('store');

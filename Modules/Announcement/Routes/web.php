@@ -13,7 +13,7 @@
 
 use Modules\Announcement\Http\Controllers\AnnouncementController;
 
-Route::prefix('announcement')->name('announcement.')->group(function() {
+Route::prefix('announcement')->name('announcement.')->middleware(['auth'])->group(function() {
     Route::get('/', [AnnouncementController::class, 'index'])->name('index');
     Route::get('/create', [AnnouncementController::class, 'create'])->name('create');
     Route::post('/', [AnnouncementController::class, 'store'])->name('store');
