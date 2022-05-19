@@ -30,6 +30,11 @@ class User extends Authenticatable implements MustVerifyEmail
     const DEFAULT_TYPE = 'Agriculturist';
     const TYPE_ADMIN = 'Administrator';
 
+    public function is($role = 'Administrator'): bool
+    {
+        return $this->type === \App\Models\User::TYPE_ADMIN;
+    }
+
     public function getNameAttribute()
     {
         return "$this->first_name $this->last_name";

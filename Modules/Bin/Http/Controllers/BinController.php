@@ -56,8 +56,12 @@ class BinController extends Controller
             ],
             'Map' => [
                 'path' => '\\Modules\\MapTag\\Entities\\MapTag',
-                'label' => 'Map'
+                'label' => 'Map Tag'
             ],
+            'Association' => [
+                'path' => '\\Modules\\Association\\Entities\\Association',
+                'label' => 'Association',
+            ]
         ];
         if (!is_null($key)) {
             return $data[$key];

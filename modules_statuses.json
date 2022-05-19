@@ -8,5 +8,6 @@
     "Profile": true,
     "Inventory": true,
     "Fishermen": true,
-    "Bin": true
+    "Bin": true,
+    "Association": true
 }

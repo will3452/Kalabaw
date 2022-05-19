@@ -44,7 +44,7 @@
                     </li>
                 @endif
 
-                @if (hasModule('Fishermen') && auth()->user()->type !== \App\Models\User::TYPE_ADMIN)
+                @if (hasModule('Fishermen') && ! auth()->user()->is(\App\Models\User::TYPE_ADMIN))
                     <li>
                         <a href="#fishermens" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Fishermen</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                         <div id="fishermens" class="collapse ">
@@ -69,9 +69,15 @@
                     </li>
                 @endif
 
-                @if (hasModule('Bin'))
+                @if (hasModule('Bin') && ! auth()->user()->is(\App\Models\User::TYPE_ADMIN))
                     <x-dashboard.sidebar-link href="{{route('bin.index')}}" icon="lnr lnr-trash" active="{{isActive(route('bin.index'))}}">
                         Bin
+                    </x-dashboard.sidebar-link>
+                @endif
+
+                @if (hasModule('Association') && ! auth()->user()->is(\App\Models\User::TYPE_ADMIN))
+                    <x-dashboard.sidebar-link href="{{route('assoc.index')}}" icon="lnr lnr-users" active="{{isActive(route('assoc.index'))}}">
+                        Association
                     </x-dashboard.sidebar-link>
                 @endif
 
