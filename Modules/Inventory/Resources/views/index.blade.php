@@ -30,7 +30,7 @@
                         </th>
                         <th>
                             <a class="btn btn-sm btn-primary" href="{{route('inventory.edit', ['inventory' => $f->id])}}">EDIT</a>
-                            <button class="btn btn-sm btn-danger" onclick="submitDeleteForm('formdelete{{$f->id}}')">DELETE</button>
+                            <button class="btn btn-sm btn-danger" onclick="submitDeleteForm('formdelete{{$f->id}}')">ARCHIVE</button>
                             <form style="display:inline;" action="{{route('inventory.delete', ['inventory' => $f->id])}}" method="POST" id="formdelete{{$f->id}}">
                                 @csrf @method('DELETE')
                             </form>

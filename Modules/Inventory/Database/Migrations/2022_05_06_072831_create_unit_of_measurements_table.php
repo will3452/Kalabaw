@@ -20,6 +20,7 @@ class CreateUnitOfMeasurementsTable extends Migration
             foreach ($columns as $value) {
                 $table->string($value)->nullable();
             }
+            $table->softDeletes();
             $table->timestamps();
         });
     }

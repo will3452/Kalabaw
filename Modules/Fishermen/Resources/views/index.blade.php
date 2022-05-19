@@ -35,8 +35,7 @@
                             <a class="btn btn-sm btn-primary" href="{{route('fishermen.edit', ['fishermen' => $f->id])}}">EDIT</a>
                         </td>
                         <th>
-
-                            <button class="btn btn-sm btn-danger" onclick="submitDeleteForm('formdelete{{$f->id}}')">DELETE</button>
+                            <button class="btn btn-sm btn-danger" onclick="submitDeleteForm('formdelete{{$f->id}}')">ARCHIVE</button>
                             <form style="display:inline;" action="{{route('fishermen.delete', ['fishermen' => $f->id])}}" method="POST" id="formdelete{{$f->id}}">
                                 @csrf @method('DELETE')
                             </form>

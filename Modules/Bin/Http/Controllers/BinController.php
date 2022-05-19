@@ -61,6 +61,10 @@ class BinController extends Controller
             'Association' => [
                 'path' => '\\Modules\\Association\\Entities\\Association',
                 'label' => 'Association',
+            ],
+            'Item' => [
+                'path' => '\\Modules\\Inventory\\Entities\\Item',
+                'label' => 'Item in Inventory'
             ]
         ];
         if (!is_null($key)) {
