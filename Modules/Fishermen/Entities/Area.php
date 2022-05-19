@@ -5,10 +5,11 @@ namespace Modules\Fishermen\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Modules\MapTag\Entities\Traits\MapTagTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Area extends Model
 {
-    use HasFactory, MapTagTrait;
+    use HasFactory, MapTagTrait, SoftDeletes;
 
     protected $fillable = [
         'fishermen_id',
@@ -73,7 +74,7 @@ class Area extends Model
 
     public function title()
     {
-        return $this->fishermen->title();
+        return $this->id;
     }
 
     public function fishermen()
@@ -84,12 +85,20 @@ class Area extends Model
     public function getRelation($rel)
     {
         if ($rel == 'fishermen') {
-            return $this->fishermen;
+            return Fishermen::withTrashed()->find($this->fishermen_id);
         }
     }
 
     protected static function newFactory()
     {
         return \Modules\Fishermen\Database\factories\AreaFactory::new();
+    }
+
+    public static function boot () {
+        parent::boot();
+
+        static::deleted(function ($model) {
+            $model->mapTag()->delete();
+        });
     }
 }

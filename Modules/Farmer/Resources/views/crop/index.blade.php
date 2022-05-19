@@ -1,7 +1,7 @@
 <x-dashboard.layout>
-    <x-page.title>Crops</x-page.title>
+    <x-page.title>Farms</x-page.title>
     <a href="{{route('crop.create')}}" class="btn btn-primary">
-        Add New Crop
+        Add New Record
     </a>
     <br/>
     <x-panel title="List">

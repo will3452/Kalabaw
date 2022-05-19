@@ -4,11 +4,13 @@ namespace Modules\Farmer\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Barangay\Entities\Barangay;
 
 class Farmer extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'first_name',
@@ -96,6 +98,26 @@ class Farmer extends Model
             'recorded_by_id',
         ];
 
+    public function crops()
+    {
+        return $this->hasMany(Crop::class, 'farmer_id');
+    }
+
+    public function machineAndEquipments()
+    {
+        return $this->hasMany(MachineAndEquipment::class, 'farmer_id');
+    }
+
+    public function livestockOrPoultries()
+    {
+        return $this->hasMany(LivestockOrPoultry::class, 'farmer_id');
+    }
+
+    public function trees()
+    {
+        return $this->hasMany(Tree::class, 'farmer_id');
+    }
+
     protected static function newFactory()
     {
         return \Modules\Farmer\Database\factories\FarmerFactory::new();
@@ -105,6 +127,13 @@ class Farmer extends Model
         parent::boot();
         static::creating(function ($model) {
             $model->recorded_by_id = auth()->id();
+        });
+
+        static::deleted(function ($model) {
+            $model->crops->each(fn ($e) => $e->delete());
+            $model->machineAndEquipments->each(fn ($e) => $e->delete());
+            $model->livestockOrPoultries->each(fn ($e) => $e->delete());
+            $model->trees->each(fn ($e) => $e->delete());
         });
     }
 }

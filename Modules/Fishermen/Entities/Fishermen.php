@@ -4,10 +4,11 @@ namespace Modules\Fishermen\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Fishermen extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'first_name',
@@ -40,6 +41,11 @@ class Fishermen extends Model
 
     const _CHECKBOX = [
     ];
+
+    public function areas()
+    {
+        return $this->hasMany(Area::class, 'fishermen_id');
+    }
 
     const _TYPE = [
         'contact_no' => 'number',
@@ -98,6 +104,10 @@ class Fishermen extends Model
         parent::boot();
         static::creating(function ($model) {
             $model->recorded_by_id = auth()->id();
+        });
+
+        static::deleted(function ($model) {
+            $model->areas->each(fn ($e) => $e->delete());
         });
     }
 }

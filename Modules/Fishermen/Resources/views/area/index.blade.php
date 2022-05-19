@@ -17,7 +17,7 @@
                     <tr>
                         @foreach ($columns as $c)
                             <td style="font-size:14px;">
-                                {{$f[$c]}}
+                                {{getFieldValue($f, $c)}}
                             </td>
                         @endforeach
                         <th>

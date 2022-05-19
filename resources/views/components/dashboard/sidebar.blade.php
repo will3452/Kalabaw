@@ -69,7 +69,13 @@
                     </li>
                 @endif
 
-                @if (hasModule('MapTag'))
+                @if (hasModule('Bin'))
+                    <x-dashboard.sidebar-link href="{{route('bin.index')}}" icon="lnr lnr-trash" active="{{isActive(route('bin.index'))}}">
+                        Bin
+                    </x-dashboard.sidebar-link>
+                @endif
+
+                @if (hasModule('Announcement'))
                     <x-dashboard.sidebar-link href="{{route('announcement.index')}}" icon="lnr lnr-bullhorn" active="{{isActive(route('announcement.index'))}}">
                         Announcements
                     </x-dashboard.sidebar-link>

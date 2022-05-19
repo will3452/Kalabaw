@@ -7,10 +7,12 @@
     <x-panel title="List">
         <table id="myTable">
             <thead>
-                @foreach ($columns as $c)
+                <tr>
+                    @foreach ($columns as $c)
                     <th style="font-size:14px;">{{getFieldLabel($c)}}</th>
                 @endforeach
                 <th></th>
+                </tr>
             </thead>
             <tbody>
                 @foreach ($fishermens as $f)

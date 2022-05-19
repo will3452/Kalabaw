@@ -7,5 +7,6 @@
     "Announcement": true,
     "Profile": true,
     "Inventory": true,
-    "Fishermen": true
+    "Fishermen": true,
+    "Bin": true
 }

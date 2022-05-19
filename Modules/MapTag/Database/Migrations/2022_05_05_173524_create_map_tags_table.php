@@ -19,6 +19,7 @@ class CreateMapTagsTable extends Migration
             $table->unsignedBigInteger('model_id')->nullable();
             $table->string('color')->default('#000000');
             $table->string('area');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

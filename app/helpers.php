@@ -131,9 +131,8 @@ if ( ! function_exists('getFieldValue')){
                 $strArr[] = $w;
             }
             $relation = implode("_", $strArr);
-            return optional($column->getRelation($relation))->title();
+            return optional($column->getRelation($relation))->title() ?? 'Deleted';
         }
-
 
         if (isCheckboxField($key, get_class($column))) {
             $array = json_decode($column[$key]);

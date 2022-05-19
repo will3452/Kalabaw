@@ -4,11 +4,12 @@ namespace Modules\Farmer\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\MapTag\Entities\Traits\MapTagTrait;
 
 class Crop extends Model
 {
-    use HasFactory, MapTagTrait;
+    use HasFactory, MapTagTrait, SoftDeletes;
 
     protected $fillable = [
         'farmer_id',
@@ -17,7 +18,7 @@ class Crop extends Model
         'tenure_type',
         'land_owner_last_name',
         'land_owner_fist_name',
-        'land_owner_last_name',
+        'land_owner_middle_name',
         'crop_or_commodities',
         'size',
         'organically_grown',
@@ -31,7 +32,7 @@ class Crop extends Model
         'tenure_type',
         'land_owner_last_name',
         'land_owner_fist_name',
-        'land_owner_last_name',
+        'land_owner_middle_name',
         'crop_or_commodities',
         'size',
         'organically_grown',
@@ -70,7 +71,7 @@ class Crop extends Model
 
     public function title()
     {
-        return $this->farmer->title();
+        return $this->id;
     }
 
     public function farmer()
@@ -86,7 +87,7 @@ class Crop extends Model
     public function getRelation($rel)
     {
         if ($rel == 'farmer') {
-            return $this->farmer;
+            return Farmer::withTrashed()->find($this->farmer_id);
         }
     }
 
@@ -94,6 +95,14 @@ class Crop extends Model
     protected static function newFactory()
     {
         return \Modules\Barangay\Database\factories\CropFactory::new();
+    }
+
+    public static function boot () {
+        parent::boot();
+
+        static::deleted(function ($model) {
+            $model->mapTag()->delete();
+        });
     }
 
 }

@@ -1,5 +1,5 @@
 <x-dashboard.layout>
-    <x-panel title="Register New Crop">
+    <x-panel title="Register New Farm">
         <form action="{{route('crop.store')}}" method="POST">
             @csrf
             @foreach ($columns as $c)
