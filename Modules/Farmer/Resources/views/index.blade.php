@@ -13,6 +13,8 @@
                 {{-- <th></th> --}}
                 <th></th>
                 <th></th>
+                <th></th>
+                <th></th>
             </thead>
             <tbody>
                 @foreach ($farmers as $f)
@@ -26,10 +28,16 @@
                             <a class="btn btn-sm btn-success" href="{{route('farmer.print', ['farmer' => $f->id])}}">Generate Printable</a>
                         </td> --}}
                         <td>
+                            <a href="{{route('crop.create', ['farmer' => $f->id])}}" class="btn btn-sm btn-warning">ADD FARM</a>
+                        </td>
+                        <td>
+                            <a href="{{route('farmer.show', ['farmer' => $f->id])}}" class="btn btn-sm btn-success">VIEW</a>
+                        </td>
+                        <td>
                             <a class="btn btn-sm btn-primary" href="{{route('farmer.edit', ['farmer' => $f->id])}}">EDIT</a>
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-danger" onclick="submitDeleteForm('formdelete{{$f->id}}')">DELETE</button>
+                            <button class="btn btn-sm btn-danger" onclick="submitDeleteForm('formdelete{{$f->id}}')">ARCHIVE</button>
                             <form style="display:inline;" action="{{route('farmer.delete', ['farmer' => $f->id])}}" method="POST" id="formdelete{{$f->id}}">
                                 @csrf @method('DELETE')
                             </form>

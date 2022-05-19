@@ -10,6 +10,19 @@ class Fishermen extends Model
 {
     use HasFactory, SoftDeletes;
 
+
+    const _DISPLAY = [
+        "Personal" => [
+            ['last_name', 'first_name', 'middle_name'],
+            ['sex', 'birth_date'],
+            ['barangay', 'contact_no'],
+            ['highest_formal_education', 'occupation'],
+            ['spouse_last_name', 'spouse_first_name', 'spouse_middle_name'],
+            ['other_source_of_income', '4ps_family'],
+        ],
+    ];
+
+
     protected $fillable = [
         'first_name',
         'last_name',

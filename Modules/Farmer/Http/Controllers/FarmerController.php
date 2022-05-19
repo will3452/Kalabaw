@@ -71,9 +71,11 @@ class FarmerController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function show(Farmer $farmer)
     {
-        return view('farmer::show');
+        $relations = ['crops', 'machineAndEquipments', 'livestockOrPoultries', 'trees'];
+        $farmer->load($relations);
+        return view('farmer::show', compact('farmer'));
     }
 
     /**

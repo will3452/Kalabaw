@@ -12,6 +12,19 @@ class Farmer extends Model
 {
     use HasFactory, SoftDeletes;
 
+    const _DISPLAY = [
+        "Personal" => [
+            ['last_name', 'first_name', 'middle_name'],
+            ['gender', 'birth_date'],
+            ['barangay', 'contact_no'],
+            ['civil_status', 'occupation'],
+            ['spouse_last_name', 'spouse_first_name', 'spouse_middle_name'],
+            ['other_source_of_income', '4ps_family'],
+            ['beneficiary_last_name', 'beneficiary_first_name', 'beneficiary_middle_name'],
+            ['annual_income_last_year_farming', 'annual_income_last_year_non_farming'],
+        ],
+    ];
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -27,7 +40,9 @@ class Farmer extends Model
         'other_source_of_income',
         '4ps_family',
         'birth_date',
-        'beneficiary',
+        'beneficiary_last_name',
+        'beneficiary_first_name',
+        'beneficiary_middle_name',
         'annual_income_last_year_farming',
         'annual_income_last_year_non_farming',
         'recorded_by_id',
@@ -92,7 +107,9 @@ class Farmer extends Model
             'occupation',
             'other_source_of_income',
             '4ps_family',
-            'beneficiary',
+            'beneficiary_last_name',
+            'beneficiary_first_name',
+            'beneficiary_middle_name',
             'annual_income_last_year_farming',
             'annual_income_last_year_non_farming',
             'recorded_by_id',

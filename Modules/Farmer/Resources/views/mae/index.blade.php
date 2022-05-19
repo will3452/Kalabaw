@@ -22,7 +22,7 @@
                         @endforeach
                         <th>
                             <a class="btn btn-sm btn-primary" href="{{route('mae.edit', ['mae' => $f->id])}}">EDIT</a>
-                            <button class="btn btn-sm btn-danger" onclick="submitDeleteForm('formdelete{{$f->id}}')">DELETE</button>
+                            <button class="btn btn-sm btn-danger" onclick="submitDeleteForm('formdelete{{$f->id}}')">ARCHIVE</button>
                             <form style="display:inline;" action="{{route('mae.delete', ['mae' => $f->id])}}" method="POST" id="formdelete{{$f->id}}">
                                 @csrf @method('DELETE')
                             </form>

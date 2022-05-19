@@ -22,7 +22,8 @@ Route::prefix('farmer')->name('farmer.')->group(function() {
     Route::get('/', [FarmerController::class, 'index'])->name('index');
     Route::get('/create', [FarmerController::class, 'create'])->name('create');
     Route::post('/', [FarmerController::class, 'store'])->name('store');
-    Route::get('/{farmer}', [FarmerController::class, 'edit'])->name('edit');
+    Route::get('/{farmer}', [FarmerController::class, 'show'])->name('show');
+    Route::get('/edit/{farmer}', [FarmerController::class, 'edit'])->name('edit');
     Route::put('/{farmer}', [FarmerController::class, 'update'])->name('update');
     Route::delete('/{farmer}', [FarmerController::class, 'destroy'])->name('delete');
 });

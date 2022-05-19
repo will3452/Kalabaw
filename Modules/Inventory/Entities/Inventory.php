@@ -32,7 +32,8 @@ class Inventory extends Model
     const _SELECT = [
         'user_id',
         'item_id',
-        'movement'
+        'movement',
+        'destination',
     ];
 
     const _OPTIONS = [

@@ -3,7 +3,6 @@
     <div class="sidebar-scroll">
         <nav>
             <ul class="nav">
-
                 <x-dashboard.sidebar-link icon="lnr lnr-home" href="{{route('home')}}" active="{{isActive(route('home'))}}">
                     Dashboard
                 </x-dashboard.sidebar-link>

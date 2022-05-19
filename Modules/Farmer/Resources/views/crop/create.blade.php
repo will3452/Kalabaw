@@ -5,11 +5,19 @@
             @foreach ($columns as $c)
                 @if (! isExcludeToForm($c, $model))
                     @if (isSelectField($c, $model))
-                        <x-form.select name="{{$c}}" label="{{getFieldLabel($c)}}">
-                            @foreach (getFieldsOption($c, $model) as $key=>$value)
-                                <option value="{{$key}}">{{$value}}</option>
-                            @endforeach
-                        </x-form.select>
+                        @if (request()->has('farmer') && $c == 'farmer_id')
+                        <div style="margin-bottom: 1em;">
+                            Farmer: {{\Modules\Farmer\Entities\Farmer::find(request()->farmer)->title()}}
+                            <input type="hidden" name="farmer_id" value="{{request()->farmer}}" />
+                        </div>
+                        @else
+                            <x-form.select name="{{$c}}" label="{{getFieldLabel($c)}}">
+                                @foreach (getFieldsOption($c, $model) as $key=>$value)
+                                    <option value="{{$key}}">{{$value}}</option>
+                                @endforeach
+                            </x-form.select>
+                        @endif
+
                     @elseif(isCheckboxField($c, $model))
                     <x-form.checkbox-group label="{{getFieldLabel($c)}}">
                         @foreach (getFieldsOption($c, $model) as $key=>$value)

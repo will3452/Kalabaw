@@ -24,7 +24,7 @@
                         @endforeach
                         <th>
                             <a class="btn btn-sm btn-primary" href="{{route('assoc.edit', ['association' => $f->id])}}">EDIT</a>
-                            <button class="btn btn-sm btn-danger" onclick="submitDeleteForm('formdelete{{$f->id}}')">DELETE</button>
+                            <button class="btn btn-sm btn-danger" onclick="submitDeleteForm('formdelete{{$f->id}}')">ARCHIVE</button>
                             <form style="display:inline;" action="{{route('assoc.delete', ['association' => $f->id])}}" method="POST" id="formdelete{{$f->id}}">
                                 @csrf @method('DELETE')
                             </form>

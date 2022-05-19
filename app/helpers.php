@@ -1,5 +1,6 @@
 <?php
 
+use Modules\Association\Entities\Association;
 use Nwidart\Modules\Facades\Module;
 use Modules\Barangay\Entities\Barangay;
 use Modules\Farmer\Entities\Farmer;
@@ -65,6 +66,15 @@ if ( ! function_exists('getFieldLabel')) {
 if ( ! function_exists('getFieldsOption')) {
     function getFieldsOption($c, $model): array
     {
+        if ($c == 'destination') {
+            $result = [];
+            $destinations = Association::get(['id', 'name', 'barangay']);
+            foreach ($destinations as $value) {
+                $result[$value['id']] = $value['name'] . '-' . $value['barangay'];
+            }
+
+            return $result;
+        }
         if ($c == 'farmer_id') {
             $result = [];
             $farmers = Farmer::get(['id', 'first_name', 'last_name', 'middle_name']);

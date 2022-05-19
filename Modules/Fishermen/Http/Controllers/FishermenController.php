@@ -67,9 +67,10 @@ class FishermenController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function show(Fishermen $fishermen)
     {
-        return view('fishermen::show');
+        $fishermen->load('areas');
+        return view('fishermen::show', compact('fishermen'));
     }
 
     /**
