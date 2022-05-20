@@ -69,8 +69,11 @@ class Crop extends Model
         ],
     ];
 
-    public function title()
+    public function title($map = false)
     {
+        if ($map) {
+            return Farmer::withTrashed()->find($this->farmer_id)->title();
+        }
         return $this->id;
     }
 

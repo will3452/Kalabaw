@@ -72,8 +72,11 @@ class Area extends Model
     ];
 
 
-    public function title()
+    public function title($map = false)
     {
+        if ($map) {
+            return Fishermen::withTrashed()->find($this->fishermen_id)->title();
+        }
         return $this->id;
     }
 
