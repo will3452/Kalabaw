@@ -71,7 +71,7 @@ if ( ! function_exists('getFieldsOption')) {
             $result['Office'] = 'Office';
             $destinations = Association::get(['id', 'name', 'barangay']);
             foreach ($destinations as $value) {
-                $result[$value['id']] = $value['name'] . '-' . $value['barangay'];
+                $result[$value['name'] . '-' . $value['barangay']] = $value['name'] . '-' . $value['barangay'];
             }
 
             return $result;
