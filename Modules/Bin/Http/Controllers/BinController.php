@@ -54,10 +54,10 @@ class BinController extends Controller
                 'path' => '\\Modules\\Fishermen\\Entities\\Fishermen',
                 'label' => 'Fishermen'
             ],
-            'Map' => [
-                'path' => '\\Modules\\MapTag\\Entities\\MapTag',
-                'label' => 'Map Tag'
-            ],
+            // 'Map' => [
+            //     'path' => '\\Modules\\MapTag\\Entities\\MapTag',
+            //     'label' => 'Map Tag'
+            // ],
             'Association' => [
                 'path' => '\\Modules\\Association\\Entities\\Association',
                 'label' => 'Association',
