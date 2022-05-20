@@ -6,7 +6,6 @@
                 @if (! isExcludeToForm($c, $model))
                     @if (isSelectField($c, $model))
                         <x-form.select name="{{$c}}" label="{{getFieldLabel($c)}}">
-                            <option value="N/a">N/a</option>
                             @foreach (getFieldsOption($c, $model) as $key=>$value)
                                 <option value="{{$key}}">{{$value}}</option>
                             @endforeach
