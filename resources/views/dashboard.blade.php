@@ -66,7 +66,7 @@
                         <span class="icon"><i class="fa fa-seedling"></i></i></span>
                         <p>
                             <span class="number">{{\Modules\Farmer\Entities\Crop::count()}}</span>
-                            <span class="title">Crops</span>
+                            <span class="title">Farms</span>
                         </p>
                     </div>
                 </div>
