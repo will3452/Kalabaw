@@ -108,6 +108,6 @@ class BarangayController extends Controller
     public function destroy(Barangay $barangay)
     {
         $barangay->delete();
-        return back()->withSuccess('Record has been deleted!');
+        return back()->withSuccess('Record has been archived! ');
     }
 }

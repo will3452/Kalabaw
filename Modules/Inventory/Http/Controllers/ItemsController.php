@@ -107,6 +107,6 @@ class ItemsController extends Controller
     public function destroy(Item $item)
     {
         $item->delete();
-        return back()->withSuccess('Record has been deleted!');
+        return back()->withSuccess('Record has been archived! ');
     }
 }

@@ -6,7 +6,7 @@
         <div>
             <div>
                 <label for="color" class="form-control-label">Set Color</label>
-                <input type="color"  id="color" class="form-control" style="width:100px">
+                <input type="text"  id="color" class="" style="width:100px">
             </div>
             <br/>
 
@@ -29,9 +29,15 @@
         integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
         crossorigin=""></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     @endpush
 
     @push('body-script')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/evol-colorpicker.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css">
+    <link href="/css/evol-colorpicker.css" rel="stylesheet" type="text/css">
     <script>
         var edit = {{request()->has('edit') ? 1:0}};
         var map = L.map('map').setView([{{getLat($model->location())}}, {{getLng($model->location())}}], 18);
@@ -93,10 +99,16 @@
                     'color' : `${color}`,
                     'area' : area,
                     }).then(function (res) {
-                        bootbox.alert('Saved!');
+                        bootbox.alert('The {{$type}} has been tagged!');
                         console.log(res)
                     }).catch(err => console.log(err))
         }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#color").colorpicker();
+        });
     </script>
     @endpush
 

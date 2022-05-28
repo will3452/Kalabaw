@@ -25,6 +25,17 @@ class Farmer extends Model
         ],
     ];
 
+    const _NAMES = [
+        'last_name','first_name','middle_name',
+        'beneficiary_last_name','beneficiary_first_name','beneficiary_middle_name',
+        'spouse_last_name','spouse_first_name','spouse_middle_name',
+    ];
+
+    const _INLINES = [
+        'gender','birth_date','barangay', 'contact_no', 'civil_status', 'occupation', 'other_source_of_income', '4ps_family','annual_income_last_year_farming', 'annual_income_last_year_non_farming'
+    ];
+
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -46,10 +57,12 @@ class Farmer extends Model
         'annual_income_last_year_farming',
         'annual_income_last_year_non_farming',
         'recorded_by_id',
+        'status',
     ];
 
     const _EXCLUDE_TO_FORM = [
         'recorded_by_id',
+        'status',
     ];
 
     const _SELECT = [
@@ -113,6 +126,7 @@ class Farmer extends Model
             'annual_income_last_year_farming',
             'annual_income_last_year_non_farming',
             'recorded_by_id',
+            'status',
         ];
 
     public function crops()

@@ -61,7 +61,7 @@
                         <div id="inventory" class="collapse ">
                             <ul class="nav ">
                                 <li><a href="{{route('item.index')}}">Items</a></li>
-                                <li><a href="{{route('inventory.index')}}">Add Inventory</a></li>
+                                <li><a href="{{route('inventory.index')}}">Inventory</a></li>
                                 <li><a href="{{route('unit.index')}}">Unit of measurements</a></li>
                             </ul>
                         </div>
@@ -70,7 +70,7 @@
 
                 @if (hasModule('Bin') && ! auth()->user()->is(\App\Models\User::TYPE_ADMIN))
                     <x-dashboard.sidebar-link href="{{route('bin.index')}}" icon="lnr lnr-trash" active="{{isActive(route('bin.index'))}}">
-                        Bin
+                        Archive
                     </x-dashboard.sidebar-link>
                 @endif
 

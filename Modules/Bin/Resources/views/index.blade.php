@@ -1,6 +1,5 @@
 <x-dashboard.layout>
-    <x-page.title>Bin</x-page.title>
-    <div class="alert alert-warning">All items that takes 30 days will be deleted.</div>
+    <x-page.title>Archive</x-page.title>
     <x-panel>
         <form action="">
             <select name="type" id="">
@@ -51,7 +50,7 @@
         <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
         <script>
             function submitDeleteForm (id) {
-                bootbox.confirm("Are you sure you want to delete this record ?", (result) => !result ?'':$('#' + id).submit());
+                bootbox.confirm("Are you sure you want to archive this record? ", (result) => !result ?'':$('#' + id).submit());
             }
             $(document).ready( function () {
                 $('#myTable').DataTable();

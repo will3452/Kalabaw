@@ -56,7 +56,7 @@ class TreeController extends Controller
         }
         $data = $request->validate($fieldsToValidate);
         Tree::create($data);
-        return back()->withSuccess('Record has been saved!');
+        return back()->withSuccess('Tree has been added!');
     }
 
     /**
@@ -107,6 +107,6 @@ class TreeController extends Controller
     public function destroy(Tree $tree)
     {
         $tree->delete();
-        return back()->withSuccess('Record has been deleted!');
+        return back()->withSuccess('Record has been archived! ');
     }
 }

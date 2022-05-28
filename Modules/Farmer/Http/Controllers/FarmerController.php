@@ -63,7 +63,7 @@ class FarmerController extends Controller
         }
         $data = $request->validate($fieldsToValidate);
         Farmer::create($data);
-        return back()->withSuccess('Record has been Added!');
+        return back()->withSuccess('Farmer has been Added!');
     }
 
     /**
@@ -115,7 +115,9 @@ class FarmerController extends Controller
      */
     public function destroy(Farmer $farmer)
     {
+
+        $farmer->update(['status' => request()->status]);
         $farmer->delete();
-        return back()->withSuccess('Record has been deleted!');
+        return back()->withSuccess('Record has been archived! ');
     }
 }

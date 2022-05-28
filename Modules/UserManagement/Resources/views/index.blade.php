@@ -53,12 +53,13 @@
                         {{$user->approved_at ?? '--'}}
                     </td>
                     <td >
-                        <a class="btn btn-sm btn-primary" href="{{route('usermanagement.edit', ['user' => $user->id])}}">Edit</a>
+
                         @if ($user->wasApproved())
-                            <button class="btn btn-sm btn-warning" onclick="submitApproveForm('formapprove{{$user->id}}')">unapproved</button>
+                            <span style="font-style: italic; margin-right:10px;">Approved</span>
                         @else
                             <button class="btn btn-sm btn-success" onclick="submitApproveForm('formapprove{{$user->id}}')">Approve</button>
                         @endif
+                        <a class="btn btn-sm btn-primary" href="{{route('usermanagement.edit', ['user' => $user->id])}}">Edit</a>
                         <form style="display:inline;" action="{{route('usermanagement.approve', ['user' => $user->id])}}" method="POST" id="formapprove{{$user->id}}">
                             @csrf
                         </form>

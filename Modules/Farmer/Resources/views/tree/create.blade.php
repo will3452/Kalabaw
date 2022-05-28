@@ -5,7 +5,23 @@
         </div>
         <form action="{{route('tree.store')}}" method="POST">
             @csrf
+            @php
+                $open = false;
+                $openInline = false;
+            @endphp
             @foreach ($columns as $c)
+                @php
+                    if (!$open && isName($c, $model)) $open = true;
+                    elseif ($open && ! isName($c, $model)) $open = false;
+                    $openInline = isInline($c, $model);
+                @endphp
+                @if ($open)
+                        <div class="col-md-4" style="margin-left:-10px;">
+                @elseif ($openInline)
+                        <div class="col-md-4" style="margin-left:-10px;">
+                @else
+                        <div >
+                @endif
                 @if (! isExcludeToForm($c, $model))
                     @if (isSelectField($c, $model))
                         <x-form.select name="{{$c}}" label="{{getFieldLabel($c)}}">
@@ -28,7 +44,9 @@
                         <x-form.input type="{{getFieldType($c, $model)}}" name="{{$c}}" label="{{getFieldLabel($c)}}"/>
                     @endif
                 @endif
+            </div>
             @endforeach
+            <div class="row"></div>
             <button class="btn btn-primary">Submit</button>
         </form>
     </x-panel>

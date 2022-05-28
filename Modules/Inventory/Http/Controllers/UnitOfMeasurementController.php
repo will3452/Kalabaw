@@ -107,6 +107,6 @@ class UnitOfMeasurementController extends Controller
     public function destroy(UnitOfMeasurement $unit)
     {
         $unit->delete();
-        return back()->withSuccess('Record has been deleted!');
+        return back()->withSuccess('Record has been archived! ');
     }
 }

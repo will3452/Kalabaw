@@ -39,7 +39,7 @@ class AuthController extends Controller
         if (Auth::attempt($data, $request->remember)) {
             if (! auth()->user()->wasApproved()) {
                 auth()->logout();
-                return back()->withError("You're account is not yet approved. please contact your administrator.");
+                return back()->withError("Your request to registered has been sent to the Admin. Please wait for approval.");
             }
             return redirect($this->redirectAfterLogin());
         }

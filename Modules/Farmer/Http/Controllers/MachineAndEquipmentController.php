@@ -56,7 +56,7 @@ class MachineAndEquipmentController extends Controller
         }
         $data = $request->validate($fieldsToValidate);
         MachineAndEquipment::create($data);
-        return back()->withSuccess('Record has been saved!');
+        return back()->withSuccess('Machinery/Equipment has been added! ');
     }
 
     /**
@@ -106,7 +106,8 @@ class MachineAndEquipmentController extends Controller
      */
     public function destroy(MachineAndEquipment $mae)
     {
+        $mae->update(['status' => request()->status]);
         $mae->delete();
-        return back()->withSuccess('Record has been deleted!');
+        return back()->withSuccess('Record has been archived! ');
     }
 }

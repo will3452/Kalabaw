@@ -25,6 +25,7 @@
                             <button class="btn btn-sm btn-danger" onclick="submitDeleteForm('formdelete{{$f->id}}')">ARCHIVE</button>
                             <form style="display:inline;" action="{{route('lop.delete', ['lop' => $f->id])}}" method="POST" id="formdelete{{$f->id}}">
                                 @csrf @method('DELETE')
+                                <input type="hidden" name="status" class="status">
                             </form>
                         </th>
                     </tr>
@@ -39,7 +40,31 @@
         <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
         <script>
             function submitDeleteForm (id) {
-                bootbox.confirm("Are you sure you want to delete this record ?", (result) => !result ?'':$('#' + id).submit());
+                bootbox.prompt({
+                    title: "Are you sure you want to archive this record? ",
+                    message: '<p>Status</p>',
+                    inputType: 'radio',
+                    inputOptions: [
+                    {
+                        text: 'Deceased',
+                        value: 'Deceased',
+                    },
+                    {
+                        text: 'Slaughter',
+                        value: 'Slaughter',
+                    },
+                    {
+                        text: 'Sold',
+                        value: 'Sold',
+                    },
+                    ],
+                    callback:  function (result) {
+                        if (result) {
+                            $('.status').val(result);
+                            $('#' + id).submit()
+                        }
+                    }
+                });
             }
             $(document).ready( function () {
                 $('#myTable').DataTable();

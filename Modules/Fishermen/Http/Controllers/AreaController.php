@@ -55,8 +55,9 @@ class AreaController extends Controller
             $fieldsToValidate[$value] = 'required';
         }
         $data = $request->validate($fieldsToValidate);
+        $data['fishermen_id'] = explode('***', $data['fishermen_id'])[0];
         $area =  Area::create($data);
-        return redirect(route('maptag.create', ['edit' => 1, 'id' => $area->id, 'type' => 'Area', 'module' => 'Fishermen']))->withSuccess('Area has been added, pin to map now.');
+        return redirect(route('maptag.create', ['edit' => 1, 'id' => $area->id, 'type' => 'Area', 'module' => 'Fishermen']))->withSuccess('The area has been added! Pin to map now. ');
     }
 
     /**
@@ -107,6 +108,6 @@ class AreaController extends Controller
     public function destroy(Area $area)
     {
         $area->delete();
-        return back()->withSuccess('Record has been deleted!');
+        return back()->withSuccess('Record has been archived! ');
     }
 }

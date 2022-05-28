@@ -88,15 +88,15 @@ class AnnouncementController extends Controller
         } else if ($data['for'] == 'fishermen') {
             $mobile = Fishermen::get(['contact_no'])->pluck('contact_no');
         } else {
-            $farmers = Farmer::get(['contact_no'])->pluck('contact_no');
-            $fishermen = Fishermen::get(['contact_no'])->pluck('contact_no');
+            $farmers = Farmer::get(['contact_no'])->pluck('contact_no')->toArray();
+            $fishermen = Fishermen::get(['contact_no'])->pluck('contact_no')->toArray();
             $raw = array_merge($farmers, $fishermen);
             $mobile = array_unique($raw);
         }
         foreach ($mobile as $f) {
             $this->sendMessage($f, $request->message);
         }
-        return back()->withSuccess('Announcement has been broadcast!');
+        return back()->withSuccess('The message was successfully sent! ');
     }
 
     /**
@@ -147,6 +147,6 @@ class AnnouncementController extends Controller
     public function destroy(Announcement $announcement)
     {
         $announcement->delete();
-        return back()->withSuccess('Record has been deleted!');
+        return back()->withSuccess('Record has been archived! ');
     }
 }

@@ -59,7 +59,7 @@ class FishermenController extends Controller
         }
         $data = $request->validate($fieldsToValidate);
         Fishermen::create($data);
-        return back()->withSuccess('Record has been Added!');
+        return back()->withSuccess('Fisherman has been added!');
     }
 
     /**
@@ -110,7 +110,8 @@ class FishermenController extends Controller
      */
     public function destroy(Fishermen $fishermen)
     {
+        $fishermen->update(['status' => request()->status]);
         $fishermen->delete();
-        return back()->withSuccess('Record has been deleted!');
+        return back()->withSuccess('Record has been archived! ');
     }
 }

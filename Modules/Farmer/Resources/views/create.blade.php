@@ -5,7 +5,43 @@
             <div class="alert alert-warning">
                 Put <b>N/A</b> if the field isn't applicable/available.
             </div>
+
+            @php
+                $open = false;
+                $openInline = false;
+            @endphp
             @foreach ($columns as $c)
+
+                @if ($c === 'last_name')
+                    <div class="row"></div>
+                    <div class="input-label">
+                        Farmer
+                    </div>
+                @elseif ($c == 'spouse_last_name')
+                    <div class="row"></div>
+                    <div class="input-label">
+                        Spouse
+                    </div>
+                @elseif ($c == 'beneficiary_last_name')
+                    <div class="row"></div>
+                    <div class="input-label">
+                        Benificiary
+                    </div>
+                @endif
+
+                        @php
+                            if (!$open && isName($c, $model)) $open = true;
+                            elseif ($open && ! isName($c, $model)) $open = false;
+                            $openInline = isInline($c, $model);
+                        @endphp
+                        @if ($open)
+                                <div class="col-md-4" style="margin-left:-10px;">
+                        @elseif ($openInline)
+                                <div class="col-md-4" style="margin-left:-10px;">
+                        @else
+                                <div >
+                        @endif
+
                 @if (! isExcludeToForm($c, $model))
                     @if (isSelectField($c, $model))
                         <x-form.select name="{{$c}}" label="{{getFieldLabel($c)}}">
@@ -20,10 +56,14 @@
                             @endforeach
                         </x-form.checkbox-group>
                     @else
-                        <x-form.input type="{{getFieldType($c, $model)}}" name="{{$c}}" label="{{getFieldLabel($c)}}"/>
+
+                        <x-form.input type="{{getFieldType($c, $model)}}" name="{{$c}}" label="{{getFieldLabel($c, isName($c, $model))}}"/>
+
                     @endif
                 @endif
+            </div>
             @endforeach
+            <div class="row"></div>
             <button class="btn btn-primary">Submit</button>
         </form>
     </x-panel>

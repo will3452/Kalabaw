@@ -107,6 +107,6 @@ class AssociationController extends Controller
     public function destroy(Association $association)
     {
         $association->delete();
-        return back()->withSuccess('The record has been deleted!');
+        return back()->withSuccess('The Record has been archived! ');
     }
 }

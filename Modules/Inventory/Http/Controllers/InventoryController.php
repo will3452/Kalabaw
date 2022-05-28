@@ -107,6 +107,6 @@ class InventoryController extends Controller
     public function destroy(Inventory $inventory)
     {
         $inventory->delete();
-        return back()->withSuccess('Record has been deleted!');
+        return back()->withSuccess('Record has been archived! ');
     }
 }

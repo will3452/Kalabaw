@@ -13,15 +13,19 @@ class MachineAndEquipment extends Model
     protected $fillable = [
         'farmer_id',
         'type',
+        'serial_number',
         'number_of_units',
         'year_acquired',
+        'status',
     ];
 
     const _COLUMNS = [
         'farmer_id',
+        'serial_number',
         'type',
         'number_of_units',
         'year_acquired',
+        'status',
     ];
 
     const _TYPE = [
@@ -55,7 +59,7 @@ class MachineAndEquipment extends Model
 
 
 
-    const _EXCLUDE_TO_FORM = [];
+    const _EXCLUDE_TO_FORM = ['status'];
 
     protected static function newFactory()
     {

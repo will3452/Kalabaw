@@ -56,7 +56,7 @@ class LivestockOrPoultryController extends Controller
         }
         $data = $request->validate($fieldsToValidate);
         LivestockOrPoultry::create($data);
-        return back()->withSuccess('Record has been saved!');
+        return back()->withSuccess('Livestock/Poultry has been added!');
     }
 
     /**
@@ -106,7 +106,8 @@ class LivestockOrPoultryController extends Controller
      */
     public function destroy(LivestockOrPoultry $lop)
     {
+        $lop->update(['status' => request()->status]);
         $lop->delete();
-        return back()->withSuccess('Record has been deleted!');
+        return back()->withSuccess('Record has been archived! ');
     }
 }

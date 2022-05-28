@@ -15,12 +15,17 @@ class LivestockOrPoultry extends Model
         'type',
         'number_of_heads_(male)',
         'number_of_heads_(female)',
+        'status',
     ];
+
+    const _NAMES = [];
+    const _INLINES = ['number_of_heads_(male)', 'number_of_heads_(female)', 'type'];
     const _COLUMNS = [
         'farmer_id',
         'type',
         'number_of_heads_(male)',
         'number_of_heads_(female)',
+        'status',
     ];
 
     const _TYPE = [
@@ -53,7 +58,7 @@ class LivestockOrPoultry extends Model
     }
 
 
-    const _EXCLUDE_TO_FORM = [];
+    const _EXCLUDE_TO_FORM = ['status'];
 
     protected static function newFactory()
     {

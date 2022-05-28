@@ -41,7 +41,7 @@
         <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
         <script>
             function submitDeleteForm (id) {
-                bootbox.confirm("Are you sure you want to delete this record ?", (result) => !result ?'':$('#' + id).submit());
+                bootbox.confirm("Are you sure you want to archive this record? ", (result) => !result ?'':$('#' + id).submit());
             }
             $(document).ready( function () {
                 $('#myTable').DataTable();

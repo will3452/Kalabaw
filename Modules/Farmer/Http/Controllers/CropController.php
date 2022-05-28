@@ -55,9 +55,10 @@ class CropController extends Controller
             $fieldsToValidate[$value] = 'required';
         }
         $data = $request->validate($fieldsToValidate);
+        $data['farmer_id'] = explode('***', $data['farmer_id'])[0];
         $data['source_of_water'] = json_encode($data['source_of_water']);
         $crop = Crop::create($data);
-        return redirect(route('maptag.create', ['edit' => 1, 'id' => $crop->id, 'type' => 'Crop', 'module' => 'Farmer']))->withSuccess('Crop has been added!');
+        return redirect(route('maptag.create', ['edit' => 1, 'id' => $crop->id, 'type' => 'Crop', 'module' => 'Farmer']))->withSuccess('The farm has been added! Pin to map now');
     }
 
     /**
@@ -108,6 +109,6 @@ class CropController extends Controller
     public function destroy(Crop $crop)
     {
         $crop->delete();
-        return back()->withSuccess('Record has been deleted!');
+        return back()->withSuccess('Record has been archived! ');
     }
 }

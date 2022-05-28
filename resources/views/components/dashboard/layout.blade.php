@@ -22,6 +22,7 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon.png">
     @stack('head-script')
     <script src="https://kit.fontawesome.com/a4002f772f.js" crossorigin="anonymous"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
 <body>

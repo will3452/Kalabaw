@@ -26,6 +26,9 @@ class Tree extends Model
         'records_of_production',
     ];
 
+    const _NAMES = [];
+    const _INLINES = ['kind', 'number_of_trees', 'number_of_months', 'records_of_production'];
+
     const _TYPE = [
         'number_of_months' => 'number',
         'number_of_trees' => 'number',

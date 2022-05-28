@@ -16,6 +16,7 @@ class Inventory extends Model
         'movement',
         'quantity',
         'destination',
+        'recipient',
         'user_id',
     ];
     const _COLUMNS = [
@@ -23,6 +24,7 @@ class Inventory extends Model
         'movement',
         'quantity',
         'destination',
+        'recipient',
         'user_id',
     ];
 

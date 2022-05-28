@@ -46,7 +46,7 @@ if ( ! function_exists('isCheckboxField')) {
 }
 
 if ( ! function_exists('getFieldLabel')) {
-    function getFieldLabel($c): string
+    function getFieldLabel($c, $isName = false): string
     {
         $words = explode('_', $c);
         $strArr = [];
@@ -58,6 +58,11 @@ if ( ! function_exists('getFieldLabel')) {
                     $strArr[] = $w;
                 }
             }
+        }
+        if ($isName) {
+            $lastIndex = count($strArr) - 1;
+            $label = implode(' ', [$strArr[$lastIndex - 1], $strArr[$lastIndex]]);
+            return \Str::upper($label);
         }
         return \Str::upper(implode(' ', $strArr));
     }
@@ -80,7 +85,8 @@ if ( ! function_exists('getFieldsOption')) {
             $result = [];
             $farmers = Farmer::get(['id', 'first_name', 'last_name', 'middle_name']);
             foreach ($farmers as $value) {
-                $result[$value['id']] = $value['first_name'] . " " . $value['middle_name'] . " " . $value['last_name'];
+                $key = $value['id'] . '***' . implode('---', [$value['first_name'], $value['middle_name'], $value['last_name']]);
+                $result[$key] = $value['first_name'] . " " . $value['middle_name'] . " " . $value['last_name'];
             }
 
             return $result;
@@ -102,7 +108,8 @@ if ( ! function_exists('getFieldsOption')) {
             $result = [];
             $fishermens = Fishermen::get(['id', 'first_name', 'last_name', 'middle_name']);
             foreach ($fishermens as $value) {
-                $result[$value['id']] = $value['first_name'] . " " . $value['middle_name'] . " " . $value['last_name'];
+                $key = $value['id'] . '***' . implode('---', [$value['first_name'], $value['middle_name'], $value['last_name']]);
+                $result[$key] = $value['first_name'] . " " . $value['middle_name'] . " " . $value['last_name'];
             }
 
             return $result;
@@ -127,6 +134,20 @@ if ( ! function_exists('getFieldType')){
             return ($model)::_TYPE[$column];
         }
         return "text";
+    }
+}
+
+if ( ! function_exists('isName')){
+    function isName($column, $model): bool
+    {
+        return in_array($column, ($model)::_NAMES);
+    }
+}
+
+if ( ! function_exists('isInline')){
+    function isInline($column, $model): bool
+    {
+        return in_array($column, ($model)::_INLINES);
     }
 }
 

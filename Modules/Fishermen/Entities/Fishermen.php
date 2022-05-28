@@ -39,10 +39,12 @@ class Fishermen extends Model
         '4ps_family',
         'birth_date',
         'recorded_by_id',
+        'status',
     ];
 
     const _EXCLUDE_TO_FORM = [
         'recorded_by_id',
+        'status',
     ];
 
     const _SELECT = [
@@ -84,7 +86,8 @@ class Fishermen extends Model
             'widowed' => 'Windowed',
         ],
     ];
-
+    const _NAMES = ['last_name', 'first_name', 'middle_name', 'spouse_last_name', 'spouse_first_name', 'spouse_middle_name'];
+    const _INLINES = ['barangay', 'contact_no', 'sex', 'occupation', 'other_source_of_income', '4ps_family', 'birth_date', 'highest_formal_education'];
     public function title()
     {
         return "$this->first_name $this->middle_name $this->last_name";
@@ -105,6 +108,7 @@ class Fishermen extends Model
             'other_source_of_income',
             '4ps_family',
             'birth_date',
+            'status',
             'recorded_by_id',
         ];
 

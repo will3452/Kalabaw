@@ -13,10 +13,16 @@ class Area extends Model
 
     protected $fillable = [
         'fishermen_id',
+        'tenure_type',
         'fish_cage_sq_dot_m',
+        'fish_cage_owner_last_name',
+        'fish_cage_owner_first_name',
+        'fish_cage_owner_middle_name',
         'fish_cage_number',
         'fish_pond_sq_dot_m',
-        'fish_pond_owner',
+        'fish_pond_owner_last_name',
+        'fish_pond_owner_first_name',
+        'fish_pond_owner_middle_name',
         'fish_pond_number',
         'fishermen_using_nets',
         'barangay',
@@ -28,11 +34,17 @@ class Area extends Model
     ];
     const _COLUMNS = [
         'fishermen_id',
-        'fish_cage_sq_dot_m',
+        'tenure_type',
+        'fish_cage_owner_last_name',
+        'fish_cage_owner_first_name',
+        'fish_cage_owner_middle_name',
         'fish_cage_number',
-        'fish_pond_sq_dot_m',
-        'fish_pond_owner',
+        'fish_cage_sq_dot_m',
+        'fish_pond_owner_last_name',
+        'fish_pond_owner_first_name',
+        'fish_pond_owner_middle_name',
         'fish_pond_number',
+        'fish_pond_sq_dot_m',
         'fishermen_using_nets',
         'barangay',
         'name_of_river',
@@ -49,6 +61,15 @@ class Area extends Model
         'east',
     ];
 
+    const _OPTIONS = [
+        'tenure_type' => [
+            'leasehold' => 'Leasehold',
+            'owned' => 'Owned',
+        ],
+    ];
+    const _NAMES = ['fish_cage_owner_last_name', 'fish_cage_owner_first_name', 'fish_cage_owner_middle_name', 'fish_pond_owner_last_name',
+'fish_pond_owner_first_name', 'fish_pond_owner_middle_name'];
+    const _INLINES = ['fish_cage_number', 'fish_cage_sq_dot_m', 'tenure_type','north', 'south', 'east', 'west','fishermen_id', 'name_of_river', 'fish_pond_sq_dot_m', 'fish_pond_number', 'fishermen_using_nets', 'barangay'];
     const _TYPE = [
         'fish_cage_number' => 'number',
         'fish_cage_sq_dot_m' => 'number',
@@ -59,6 +80,7 @@ class Area extends Model
     const _SELECT = [
         'fishermen_id',
         'barangay',
+        'tenure_type',
     ];
 
     public function location()
