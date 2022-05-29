@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-boxes-stacked"></i></i></span>
+                        <span class="icon"><i class="fa fa-bullhorn"></i></i></span>
                         <p>
                             <span class="number">{{\Modules\Announcement\Entities\Announcement::count()}}</span>
                             <span class="title">Announcments</span>
@@ -94,6 +94,15 @@
                         <p>
                             <span class="number">{{\Modules\Farmer\Entities\MachineAndEquipment::count()}}</span>
                             <span class="title" style="font-size:12px;">Machineries/Equipment</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="metric">
+                        <span class="icon"><i class="fa fa-water"></i></i></span>
+                        <p>
+                            <span class="number">{{\Modules\Fishermen\Entities\Area::count()}}</span>
+                            <span class="title" style="font-size:12px;">Area</span>
                         </p>
                     </div>
                 </div>

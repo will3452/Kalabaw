@@ -69,7 +69,7 @@
                 @endif
 
                 @if (hasModule('Bin') && ! auth()->user()->is(\App\Models\User::TYPE_ADMIN))
-                    <x-dashboard.sidebar-link href="{{route('bin.index')}}" icon="lnr lnr-trash" active="{{isActive(route('bin.index'))}}">
+                    <x-dashboard.sidebar-link href="{{route('bin.index')}}" icon="lnr lnr-history" active="{{isActive(route('bin.index'))}}">
                         Archive
                     </x-dashboard.sidebar-link>
                 @endif

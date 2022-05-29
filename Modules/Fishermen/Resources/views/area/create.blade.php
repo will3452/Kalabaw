@@ -84,7 +84,7 @@
                             @endforeach
                         </x-form.checkbox-group>
                     @else
-                        <x-form.input model="{{$c}}"  type="{{getFieldType($c, $model)}}" name="{{$c}}" label="{{getFieldLabel($c)}}"/>
+                        <x-form.input model="{{$c}}"  type="{{getFieldType($c, $model)}}" name="{{$c}}" label="{{getFieldLabel($c, isName($c, $model))}}"/>
                     @endif
                 @endif
             </div>

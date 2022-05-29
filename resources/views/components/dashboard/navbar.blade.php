@@ -1,11 +1,12 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container-fluid " style="display:flex; justify-content:space-between;align-items:center;">
         <div class="navbar-btn" style="display:flex; align-items:center;">
             <button type="button" class="btn-toggle-fullwidth" ><i title="Hide/Show Sidebar" class="lnr lnr-arrow-left-circle"></i> </button>
-            <div style="margin-left: 14em;">
-                VFarm: A Recommender System with Geotagging for the City Agricultural Office (CAO) of Vigan City, Ilocos Sur
-            </div>
+
+        </div>
+        <div style="margin-left: 14em; text-align:center;">
+            VFarm: A Recommender System with Geotagging for the City Agricultural Office (CAO) of Vigan City, Ilocos Sur
         </div>
         @if (hasModule('Searchbar'))
             <x-searchbar></x-searchbar>
