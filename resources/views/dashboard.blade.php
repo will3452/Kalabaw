@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-users"></i></span>
+                        <span class="icon"><i class="fa fa-user-tie"></i></span>
                         <p>
                             <span class="number">{{\App\Models\User::count()}}</span>
                             <span class="title">Accounts</span>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-person-digging"></i></span>
+                        <span class="icon"><i class="fa fa-users"></i></span>
                         <p>
                             <span class="number">{{\Modules\Farmer\Entities\Farmer::count()}}</span>
                             <span class="title">Farmers</span>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-ship"></i></span>
+                        <span class="icon"><i class="fa fa-users"></i></span>
                         <p>
                             <span class="number">{{ \Modules\Fishermen\Entities\Fishermen::count() }}</span>
                             <span class="title">Fishermen</span>
