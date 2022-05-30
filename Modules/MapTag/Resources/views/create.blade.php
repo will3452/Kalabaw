@@ -39,7 +39,8 @@
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css">
     <link href="/css/evol-colorpicker.css" rel="stylesheet" type="text/css">
     <script>
-        var edit = {{request()->has('edit') ? 1:0}};
+        window.onload = function () {
+            var edit = {{request()->has('edit') ? 1:0}};
         var latlng = L.latLng([{{getLat($model->location())}}, {{getLng($model->location())}}]);
         var map = L.map('map').setView(latlng, 17);
         let area = [];
@@ -103,6 +104,7 @@
                         bootbox.alert('The {{$type == "Crop" ? "Farm":$type}} has been tagged!');
                         console.log(res)
                     }).catch(err => console.log(err))
+        }
         }
     </script>
 
