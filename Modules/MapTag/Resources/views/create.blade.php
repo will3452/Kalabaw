@@ -40,7 +40,8 @@
     <link href="/css/evol-colorpicker.css" rel="stylesheet" type="text/css">
     <script>
         var edit = {{request()->has('edit') ? 1:0}};
-        var map = L.map('map').setView([{{getLat($model->location())}}, {{getLng($model->location())}}], 18);
+        var latlng = L.latLng([{{getLat($model->location())}}, {{getLng($model->location())}}]);
+        var map = L.map('map').setView(latlng, 18);
         let area = [];
         var color = '#000';
         var isStreet = true;
