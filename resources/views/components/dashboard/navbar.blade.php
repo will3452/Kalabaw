@@ -5,7 +5,7 @@
             <button type="button" class="btn-toggle-fullwidth" ><i title="Hide/Show Sidebar" class="lnr lnr-arrow-left-circle"></i> </button>
 
         </div>
-        <div style="margin-left: 14em; text-align:center;">
+        <div style="margin-left: 14em; text-align:center;font-size:20px;">
             VFarm: A Recommender System with Geotagging for the City Agricultural Office (CAO) of Vigan City, Ilocos Sur
         </div>
         @if (hasModule('Searchbar'))
