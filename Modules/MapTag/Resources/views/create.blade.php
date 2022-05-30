@@ -59,7 +59,7 @@
             //exising tags rendering
             @foreach($tags as $tag)
                 let tag{{$tag->id}} = L.polygon({{$tag->area}}, {color:'{{$tag->color}}'}).addTo(map);
-                tag{{$tag->id}}.bindPopup('<h5>{{optional($tag->model)->title() ?? "---"}}</h5>').openPopup();
+                tag{{$tag->id}}.bindPopup('<h5>{{optional($tag->model)->title(true) ?? "---"}}</h5>').openPopup();
             @endforeach
 
             const render = (newarea, color = '#000') => {
