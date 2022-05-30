@@ -99,7 +99,7 @@
                     'color' : `${color}`,
                     'area' : area,
                     }).then(function (res) {
-                        bootbox.alert('The {{$type}} has been tagged!');
+                        bootbox.alert('The {{$type == "Crop" ? "Farm":$type}} has been tagged!');
                         console.log(res)
                     }).catch(err => console.log(err))
         }
