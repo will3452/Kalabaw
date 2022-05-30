@@ -59,11 +59,11 @@
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', config).addTo(map);
             var polygon = null;
 
-            //exising tags rendering
-            @foreach($tags as $tag)
-                let tag{{$tag->id}} = L.polygon({{$tag->area}}, {color:'{{$tag->color}}'}).addTo(map);
-                tag{{$tag->id}}.bindPopup('<h5>{{optional($tag->model)->title(true) ?? "---"}}</h5>').openPopup();
-            @endforeach
+            // //exising tags rendering
+            // @foreach($tags as $tag)
+            //     let tag{{$tag->id}} = L.polygon({{$tag->area}}, {color:'{{$tag->color}}'}).addTo(map);
+            //     tag{{$tag->id}}.bindPopup('<h5>{{optional($tag->model)->title(true) ?? "---"}}</h5>').openPopup();
+            // @endforeach
 
             const render = (newarea, color = '#000') => {
                 if (newarea.length == 0) {
