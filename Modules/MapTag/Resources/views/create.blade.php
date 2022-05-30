@@ -41,7 +41,7 @@
     <script>
         var edit = {{request()->has('edit') ? 1:0}};
         var latlng = L.latLng([{{getLat($model->location())}}, {{getLng($model->location())}}]);
-        var map = L.map('map').setView(latlng, 18);
+        var map = L.map('map').setView(latlng, 5);
         let area = [];
         var color = '#000';
         var isStreet = true;
