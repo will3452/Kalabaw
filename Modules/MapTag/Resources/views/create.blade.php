@@ -1,5 +1,5 @@
 <x-dashboard.layout>
-    <x-page.title>Add to Map <small>{{$model->location()}}</small> </x-page.title>
+    <x-page.title>Add to Map <small>{{$model->location()}} ({{getLat(%model->location())}}, {{getLng(%model->location())}})</small> </x-page.title>
     <div id="map"></div>
     <br/>
     @if (request()->has('edit'))
@@ -41,7 +41,7 @@
     <script>
         var edit = {{request()->has('edit') ? 1:0}};
         var latlng = L.latLng([{{getLat($model->location())}}, {{getLng($model->location())}}]);
-        var map = L.map('map').setView(latlng, 16);
+        var map = L.map('map').setView(latlng, 17);
         let area = [];
         var color = '#000';
         var isStreet = true;
