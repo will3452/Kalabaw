@@ -1,5 +1,5 @@
 <x-dashboard.layout>
-    <x-page.title>Add to Map <small>{{$model->location()}} ({{getLat(%model->location())}}, {{getLng(%model->location())}})</small> </x-page.title>
+    <x-page.title>Add to Map <small>{{$model->location()}} ({{getLat($model->location())}}, {{getLng($model->location())}})</small> </x-page.title>
     <div id="map"></div>
     <br/>
     @if (request()->has('edit'))
