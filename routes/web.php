@@ -9,5 +9,7 @@ Route::get('/', fn () => redirect('/auth'));
 Route::get('/reports', [ReportController::class, 'index'])->name('report');
 Route::get('/generate-report', [ReportController::class, 'generate']);
 
+Route::view('/about', 'about');
+
 Route::get('/dashboard', DashboardController::class)->name('home');
 Route::redirect('/login', '/auth')->name('login');
