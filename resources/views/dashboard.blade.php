@@ -1,5 +1,16 @@
 <x-dashboard.layout>
     <!-- OVERVIEW -->
+    <style>
+        .icons {
+            width:50px !important;
+            height: 50px !important;
+            margin-right: 10px;
+        }
+        .metric {
+            display: flex;
+            background: #38B6FF;
+        }
+    </style>
     <div class="panel panel-headline">
         <div class="panel-heading">
             <h3 class="panel-title">Dashboard</h3>
@@ -9,7 +20,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-user-tie"></i></span>
+                        <img src="/icons/Accounts.png" alt="" class="icons">
                         <p>
                             <span class="number">{{\App\Models\User::count()}}</span>
                             <span class="title">Accounts</span>
@@ -18,7 +29,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-users"></i></span>
+                        <img src="/icons/Farmer.png" alt="" class="icons">
                         <p>
                             <span class="number">{{\Modules\Farmer\Entities\Farmer::count()}}</span>
                             <span class="title">Farmers</span>
@@ -27,7 +38,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-users"></i></span>
+                        <img src="/icons/Fisherman.png" alt="" class="icons">
                         <p>
                             <span class="number">{{ \Modules\Fishermen\Entities\Fishermen::count() }}</span>
                             <span class="title">Fishermen</span>
@@ -36,16 +47,16 @@
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-boxes-stacked"></i></i></span>
+                        <img src="/icons/Inventory.png" alt="" class="icons">
                         <p>
                             <span class="number">{{\Modules\Inventory\Entities\Item::whereHas('inventories')->count()}}</span>
-                            <span class="title">Inventory Items</span>
+                            <span class="title" style="font-size:16px;">Inventory Items</span>
                         </p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-bullhorn"></i></i></span>
+                        <img src="/icons/Announcement.png" alt="" class="icons">
                         <p>
                             <span class="number">{{\Modules\Announcement\Entities\Announcement::count()}}</span>
                             <span class="title">Announcments</span>
@@ -54,7 +65,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-building-columns"></i></i></span>
+                        <img src="/icons/Barangay.png" alt="" class="icons">
                         <p>
                             <span class="number">{{\Modules\Barangay\Entities\Barangay::count()}}</span>
                             <span class="title">Barangay</span>
@@ -63,7 +74,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-seedling"></i></i></span>
+                        <img src="/icons/Farm.png" alt="" class="icons">
                         <p>
                             <span class="number">{{\Modules\Farmer\Entities\Crop::count()}}</span>
                             <span class="title">Farms</span>
@@ -72,7 +83,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-tree"></i></i></span>
+                        <img src="/icons/Trees.png" alt="" class="icons">
                         <p>
                             <span class="number">{{\Modules\Farmer\Entities\Tree::count()}}</span>
                             <span class="title">Trees</span>
@@ -81,28 +92,28 @@
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-cow"></i></i></span>
+                        <img src="/icons/Livestock.png" alt="" class="icons">
                         <p>
                             <span class="number">{{\Modules\Farmer\Entities\LivestockOrPoultry::count()}}</span>
-                            <span class="title">Livestock/Poultry</span>
+                            <span class="title" style="font-size:9px;">Livestock/Poultry</span>
                         </p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-tractor"></i></i></span>
+                        <img src="/icons/Machinery.png" alt="" class="icons">
                         <p>
                             <span class="number">{{\Modules\Farmer\Entities\MachineAndEquipment::count()}}</span>
-                            <span class="title" style="font-size:12px;">Machineries/Equipment</span>
+                            <span class="title" style="font-size:9px;">Machineries/Equipment</span>
                         </p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="metric">
-                        <span class="icon"><i class="fa fa-water"></i></i></span>
+                        <img src="/icons/Area.png" alt="" class="icons">
                         <p>
                             <span class="number">{{\Modules\Fishermen\Entities\Area::count()}}</span>
-                            <span class="title" style="font-size:12px;">Area</span>
+                            <span class="title">Area</span>
                         </p>
                     </div>
                 </div>
