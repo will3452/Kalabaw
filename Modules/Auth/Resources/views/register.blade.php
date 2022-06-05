@@ -3,6 +3,7 @@
         @csrf
         <x-form.input name="first_name" type="text" label="First Name" />
         <x-form.input name="last_name" type="text" label="Last Name" />
+        <x-form.input name="phone" type="number" label="Phone" />
         <x-form.input name="email" type="email" label="Email" />
         <x-form.input name="password" type="password" label="Password" />
         <x-form.input name="password_confirmation" type="password" label="Re-type password" />

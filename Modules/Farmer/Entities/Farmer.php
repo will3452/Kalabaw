@@ -26,19 +26,20 @@ class Farmer extends Model
     ];
 
     const _NAMES = [
-        'last_name','first_name','middle_name',
+        'last_name','first_name','middle_name', 'suffix',
         'beneficiary_last_name','beneficiary_first_name','beneficiary_middle_name',
         'spouse_last_name','spouse_first_name','spouse_middle_name',
     ];
 
     const _INLINES = [
-        'gender','birth_date','barangay', 'contact_no', 'civil_status', 'occupation', 'other_source_of_income', '4ps_family','annual_income_last_year_farming', 'annual_income_last_year_non_farming'
+        'association_id', 'gender','birth_date','barangay', 'contact_no', 'civil_status', 'occupation', 'other_source_of_income', '4ps_family','annual_income_last_year_farming', 'annual_income_last_year_non_farming'
     ];
 
 
     protected $fillable = [
         'first_name',
         'last_name',
+        'suffix',
         'middle_name',
         'barangay',
         'contact_no',
@@ -56,6 +57,7 @@ class Farmer extends Model
         'beneficiary_middle_name',
         'annual_income_last_year_farming',
         'annual_income_last_year_non_farming',
+        'association_id',
         'recorded_by_id',
         'status',
     ];
@@ -66,7 +68,9 @@ class Farmer extends Model
     ];
 
     const _SELECT = [
+        'suffix',
         '4ps_family',
+        'association_id',
         'gender',
         'barangay',
         'civil_status',
@@ -81,6 +85,12 @@ class Farmer extends Model
     ];
 
     const _OPTIONS = [
+        'suffix' => [
+            '--' => '--',
+            'Jr' => 'Jr',
+            'Sr' => 'Sr',
+            'III' => 'III',
+        ],
         '4ps_family' => [
             'yes' => 'Yes',
             'no' => 'No',
@@ -105,15 +115,22 @@ class Farmer extends Model
         return "$this->first_name $this->middle_name $this->last_name";
     }
 
+    const _MONEY = [
+        'annual_income_last_year_farming',
+        'annual_income_last_year_non_farming',
+    ];
+
     const _COLUMNS = [
             'last_name',
             'first_name',
             'middle_name',
+            'suffix',
             'barangay',
             'gender',
             'birth_date',
             'contact_no',
             'civil_status',
+            'association_id',
             'spouse_last_name',
             'spouse_first_name',
             'spouse_middle_name',
@@ -143,6 +160,7 @@ class Farmer extends Model
     {
         return $this->hasMany(LivestockOrPoultry::class, 'farmer_id');
     }
+
 
     public function trees()
     {

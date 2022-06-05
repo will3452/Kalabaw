@@ -11,6 +11,10 @@ class Item extends Model
 {
     use HasFactory, SoftDeletes;
 
+    const _MONEY = [
+        'amount_per_item'
+    ];
+
     protected $fillable = [
         'name',
         'amount_per_item',

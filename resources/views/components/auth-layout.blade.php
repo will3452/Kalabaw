@@ -34,7 +34,7 @@
 			<div class="vertical-align-middle">
 				<div class="auth-box">
 					<div class="left">
-						<div class="content">
+						<div class="content" style="overflow-y:auto; height:300px;">
 							{{$slot}}
 						</div>
 					</div>

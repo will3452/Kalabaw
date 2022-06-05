@@ -25,6 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'type',
         'approved_at',
+        'phone',
     ];
 
     const DEFAULT_TYPE = 'Agriculturist';

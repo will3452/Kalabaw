@@ -24,14 +24,14 @@
                         <td>{{$f->created_at}}</td>
                         @foreach ($columns as $c)
                             <td style="font-size:14px;">
-                                {{getFieldValue($f, $c)}}
+                                {{isMoney($c, get_class($f)) ? getMoney(getFieldValue($f, $c)) :getFieldValue($f, $c)}}
                             </td>
                         @endforeach
                         <td>
                             {{$f->balance()}}
                         </td>
                         <td>
-                            {{$f->totalCost()}}
+                            {{getMoney($f->totalCost())}}
                         </td>
                         <th>
                             {{$f->user->name}}

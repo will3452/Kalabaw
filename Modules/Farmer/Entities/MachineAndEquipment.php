@@ -16,6 +16,7 @@ class MachineAndEquipment extends Model
         'serial_number',
         'number_of_units',
         'year_acquired',
+        'repair_date',
         'status',
     ];
 
@@ -25,6 +26,7 @@ class MachineAndEquipment extends Model
         'type',
         'number_of_units',
         'year_acquired',
+        'repair_date',
         'status',
     ];
 

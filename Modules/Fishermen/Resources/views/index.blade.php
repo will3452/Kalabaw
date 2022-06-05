@@ -7,9 +7,9 @@
     <x-panel title="List">
         <table id="myTable">
             <thead>
-
                 <tr>
-                    <th>No.</th>
+
+                <th>No</th>
                     @foreach ($columns as $c)
                     <th style="font-size:14px;">{{getFieldLabel($c)}}</th>
                 @endforeach
@@ -22,7 +22,7 @@
             <tbody>
                 @foreach ($fishermens as $index=>$f)
                     <tr>
-                        <td>{{$index+1}}</td>
+                        <td></td>
                         @foreach ($columns as $c)
                             <td style="font-size:14px;">
                                 {{$f[$c]}}
@@ -54,6 +54,7 @@
     @endpush
     @push('body-script')
         <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/fixedcolumns/4.1.0/js/dataTables.fixedColumns.min.js"></script>
         <script>
             function submitDeleteForm (id) {
                 bootbox.prompt({
@@ -65,6 +66,10 @@
                         text: 'Deceased',
                         value: 'Deceased',
                     },
+                    {
+                        text: 'Inactive',
+                        value: 'Inactive',
+                    },
                     ],
                     callback:  function (result) {
                         if (result) {
@@ -75,7 +80,24 @@
                 });
             }
             $(document).ready( function () {
-                $('#myTable').DataTable();
+                let table = $('#myTable').DataTable({
+                        scrollY:        "300px",
+                        scrollX:        true,
+                        scrollCollapse: true,
+                        paging:         false,
+                        columnDefs: [ {
+                            sortable: false,
+                            "class": "index",
+                            targets: 0
+                        } ],
+                        order: [[ 1, 'asc' ]],
+                        fixedColumns: true
+                    });
+                    table.on( 'order.dt search.dt', function () {
+                        table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                            cell.innerHTML = i+1;
+                        } );
+                    } ).draw();
             } );
         </script>
     @endpush

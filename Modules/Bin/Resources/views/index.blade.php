@@ -35,7 +35,14 @@
                                 @csrf
                                 <input type="hidden" name="type" value="{{$modelType}}" />
                                 <input type="hidden" name="id" value="{{$f->id}}" />
-                                <button class="btn btn-primary">Restore</button>
+                                @if (in_array($modelType, ['Fishermen', 'Farmer']))
+                                    @if ($f->status != 'Deceased')
+                                        <button class="btn btn-primary">Restore</button>
+                                    @endif
+                                @else
+                                    <button class="btn btn-primary">Restore</button>
+                                @endif
+
                             </form>
                         </th>
                     </tr>

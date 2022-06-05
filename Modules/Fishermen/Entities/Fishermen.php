@@ -23,10 +23,13 @@ class Fishermen extends Model
     ];
 
 
+    const _MONEY = [];
+
     protected $fillable = [
         'first_name',
         'last_name',
         'middle_name',
+        'suffix',
         'barangay',
         'contact_no',
         'sex',
@@ -34,6 +37,7 @@ class Fishermen extends Model
         'spouse_last_name',
         'spouse_first_name',
         'spouse_middle_name',
+        'association_id',
         'occupation',
         'other_source_of_income',
         '4ps_family',
@@ -48,6 +52,8 @@ class Fishermen extends Model
     ];
 
     const _SELECT = [
+        'association_id',
+        'suffix',
         '4ps_family',
         'sex',
         'barangay',
@@ -68,6 +74,12 @@ class Fishermen extends Model
     ];
 
     const _OPTIONS = [
+        'suffix' => [
+            '--' => '--',
+            'Jr' => 'Jr',
+            'Sr' => 'Sr',
+            'III' => 'III',
+        ],
         '4ps_family' => [
             'yes' => 'Yes',
             'no' => 'No',
@@ -86,8 +98,8 @@ class Fishermen extends Model
             'widowed' => 'Windowed',
         ],
     ];
-    const _NAMES = ['last_name', 'first_name', 'middle_name', 'spouse_last_name', 'spouse_first_name', 'spouse_middle_name'];
-    const _INLINES = ['barangay', 'contact_no', 'sex', 'occupation', 'other_source_of_income', '4ps_family', 'birth_date', 'highest_formal_education'];
+    const _NAMES = ['last_name', 'first_name', 'middle_name', 'suffix', 'spouse_last_name', 'spouse_first_name', 'spouse_middle_name'];
+    const _INLINES = ['barangay', 'contact_no', 'sex', 'occupation', 'other_source_of_income', '4ps_family', 'birth_date', 'highest_formal_education', 'association_id'];
     public function title()
     {
         return "$this->first_name $this->middle_name $this->last_name";
@@ -97,9 +109,11 @@ class Fishermen extends Model
             'last_name',
             'first_name',
             'middle_name',
+            'suffix',
             'barangay',
             'contact_no',
             'sex',
+            'association_id',
             'highest_formal_education',
             'spouse_last_name',
             'spouse_first_name',

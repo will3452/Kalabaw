@@ -25,6 +25,10 @@ class Crop extends Model
         'source_of_water',
     ];
 
+    const _MONEY = [
+
+    ];
+
     const _COLUMNS = [
         'farmer_id',
         'farm_location',

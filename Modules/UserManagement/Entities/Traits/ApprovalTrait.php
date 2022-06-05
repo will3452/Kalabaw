@@ -13,6 +13,8 @@ trait ApprovalTrait{
         if ($this->wasApproved()) {
             return "$this->first_name is already approved!"; // just check if the user is already approved
         }
+
+        sendMessage($this->phone, "Hi $this->first_name, your account as agriculturist has been approved!");
         $this->update(['approved_at' => now()]);
         return null;
     }

@@ -35,9 +35,9 @@
                             $openInline = isInline($c, $model);
                         @endphp
                         @if ($open)
-                                <div class="col-md-4" style="margin-left:-10px;">
+                                <div class="col-md-3" style="margin-left:-10px;">
                         @elseif ($openInline)
-                                <div class="col-md-4" style="margin-left:-10px;">
+                                <div class="col-md-3" style="margin-left:-10px;">
                         @else
                                 <div >
                         @endif

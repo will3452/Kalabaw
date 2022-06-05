@@ -60,8 +60,8 @@
                         <a href="#inventory" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Inventories</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                         <div id="inventory" class="collapse ">
                             <ul class="nav ">
-                                <li><a href="{{route('item.index')}}">Items</a></li>
-                                <li><a href="{{route('inventory.index')}}">Inventory</a></li>
+                                <li><a href="{{route('item.index')}}">Inventory</a></li>
+                                <li><a href="{{route('inventory.index')}}">Record of transaction</a></li>
                                 <li><a href="{{route('unit.index')}}">Unit of measurements</a></li>
                             </ul>
                         </div>
@@ -85,6 +85,10 @@
                         Announcements
                     </x-dashboard.sidebar-link>
                 @endif
+
+                <x-dashboard.sidebar-link href="/reports" icon="lnr lrn-table" active="{{isActive(route('report'))}}">
+                    Reports
+                </x-dashboard.sidebar-link>
             </ul>
         </nav>
     </div>

@@ -68,11 +68,25 @@ if ( ! function_exists('getFieldLabel')) {
     }
 }
 
+if (! function_exists('isMoney')) {
+    function isMoney($c, $model): bool
+    {
+        return in_array($c, $model::_MONEY);
+    }
+}
+
+if (! function_exists('getMoney')) {
+    function getMoney($val) {
+        return "PHP " . number_format($val, 2);
+    }
+}
+
 if ( ! function_exists('getFieldsOption')) {
     function getFieldsOption($c, $model): array
     {
         if ($c == 'destination') {
             $result = [];
+            $result['N/a'] = 'N/a';
             $result['Office'] = 'Office';
             $destinations = Association::get(['id', 'name', 'barangay']);
             foreach ($destinations as $value) {
@@ -81,6 +95,19 @@ if ( ! function_exists('getFieldsOption')) {
 
             return $result;
         }
+
+        if ($c == 'association_id') {
+            $result = [];
+            $result['None'] = 'None';
+            $modelArr = explode("\\", $model);
+            $associations = Association::whereGroupOf(end($modelArr))->get(['id', 'name', 'barangay']);
+
+            foreach ($associations as $value) {
+                $result[$value['name'] . '-' . $value['barangay']] = $value['name'] . '-' . $value['barangay'];
+            }
+            return $result;
+        }
+
         if ($c == 'farmer_id') {
             $result = [];
             $farmers = Farmer::get(['id', 'first_name', 'last_name', 'middle_name']);
@@ -154,6 +181,9 @@ if ( ! function_exists('isInline')){
 if ( ! function_exists('getFieldValue')){
     function getFieldValue($column, $key)
     {
+        if ($key == "association_id") {
+            return $column[$key];
+        }
         // the word has id in the last
         $words = explode('_', $key);
         $strArr = [];
@@ -196,5 +226,31 @@ if ( ! function_exists('getModel')) {
     function getModel($module, $type)
     {
         return ("Modules\\$module\\Entities\\$type");
+    }
+}
+
+if (! function_exists('sendMessage')) {
+    function sendMessage($phone, $message)
+    {
+        $ch = curl_init();
+        $parameters = array(
+            'apikey' => env('SMS_API_KEY'),
+            'number' => $phone,
+            'message' => $message,
+            'sendername' => 'SEMAPHORE'
+        );
+        curl_setopt( $ch, CURLOPT_URL,'https://semaphore.co/api/v4/messages');
+        curl_setopt( $ch, CURLOPT_POST, 1 );
+
+        //Send the parameters set above with the request
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $parameters ) );
+
+        // Receive response from server
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+        $output = curl_exec( $ch );
+        curl_close ($ch);
+
+        //Show the server response
+        echo $output;
     }
 }

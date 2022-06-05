@@ -22,7 +22,7 @@
                         <td>{{$f->created_at}}</td>
                         @foreach ($columns as $c)
                             <td style="font-size:14px;">
-                                {{getFieldValue($f, $c)}}
+                                {{isMoney($c, get_class($f)) ? getMoney(getFieldValue($f, $c)) :getFieldValue($f, $c)}}
                             </td>
                         @endforeach
                         <th>

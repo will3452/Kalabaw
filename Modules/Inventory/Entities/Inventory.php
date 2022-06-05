@@ -11,6 +11,10 @@ class Inventory extends Model
 {
     use HasFactory, SoftDeletes;
 
+    const _MONEY = [
+
+    ];
+
     protected $fillable = [
         'item_id',
         'movement',

@@ -2,6 +2,9 @@
     <x-panel title="Register Machinery/Equipement">
         <form action="{{route('mae.store')}}" method="POST">
             @csrf
+            <div class="alert alert-warning">
+                Put <b>N/A</b> if the field isn't applicable/available.
+            </div>
             @foreach ($columns as $c)
                 @if (! isExcludeToForm($c, $model))
                     @if (isSelectField($c, $model))

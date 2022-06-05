@@ -10,6 +10,8 @@ class LivestockOrPoultry extends Model
 {
     use HasFactory, SoftDeletes;
 
+    const _MONEY = [];
+
     protected $fillable = [
         'farmer_id',
         'type',
