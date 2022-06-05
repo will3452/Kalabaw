@@ -86,7 +86,7 @@
                     </x-dashboard.sidebar-link>
                 @endif
 
-                <x-dashboard.sidebar-link href="/reports" icon="lnr lrn-table" active="{{isActive(route('report'))}}">
+                <x-dashboard.sidebar-link href="/reports" icon="lnr lnr-printer" active="{{isActive(route('report'))}}">
                     Reports
                 </x-dashboard.sidebar-link>
             </ul>
