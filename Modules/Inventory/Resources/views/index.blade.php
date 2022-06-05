@@ -1,5 +1,5 @@
 <x-dashboard.layout>
-    <x-page.title>Inventories</x-page.title>
+    <x-page.title>Inventory</x-page.title>
     <a href="{{route('inventory.create')}}" class="btn btn-primary">
         Add New Record
     </a>
