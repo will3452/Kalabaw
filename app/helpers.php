@@ -77,7 +77,7 @@ if (! function_exists('isMoney')) {
 
 if (! function_exists('getMoney')) {
     function getMoney($val) {
-        return "PHP " . number_format($val, 2);
+        return "PHP " . number_format((float)$val, 2);
     }
 }
 
