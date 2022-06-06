@@ -50,11 +50,14 @@
                             @endforeach
                         </x-form.select>
                     @elseif(isCheckboxField($c, $model))
+                    <div class="row">
                         <x-form.checkbox-group label="{{getFieldLabel($c)}}">
                             @foreach (getFieldsOption($c, $model) as $key=>$value)
                                 <x-form.checkbox label="{{$value}}" value="{{$value}}" name="{{$key}}"/>
                             @endforeach
                         </x-form.checkbox-group>
+                    </div>
+
                     @else
 
                         <x-form.input type="{{getFieldType($c, $model)}}" name="{{$c}}" label="{{getFieldLabel($c, isName($c, $model))}}"/>
