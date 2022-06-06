@@ -11,6 +11,10 @@
             border-collapse: collapse;
         }
 
+        .hide {
+            margin-left: 1em !important;
+        }
+
         th, td {
             padding: 1em;
             border:1px solid #222;
