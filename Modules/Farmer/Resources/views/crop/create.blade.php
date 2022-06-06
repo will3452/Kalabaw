@@ -67,16 +67,18 @@
                         @endif
 
                     @elseif(isCheckboxField($c, $model))
-                    <x-form.checkbox-group label="{{getFieldLabel($c)}}">
-                        @foreach (getFieldsOption($c, $model) as $key=>$value)
-                            <div class="form-group clearfix">
-                                <label class="fancy-checkbox element-left">
-                                    <input  type="checkbox" name="{{$c}}[]" value="{{$value}}">
-                                    <span>{{$value}}</span>
-                                </label>
-                            </div>
-                        @endforeach
-                    </x-form.checkbox-group>
+                    <div class="row">
+                        <x-form.checkbox-group label="{{getFieldLabel($c)}}">
+                            @foreach (getFieldsOption($c, $model) as $key=>$value)
+                                <div class="form-group clearfix">
+                                    <label class="fancy-checkbox element-left">
+                                        <input  type="checkbox" name="{{$c}}[]" value="{{$value}}">
+                                        <span>{{$value}}</span>
+                                    </label>
+                                </div>
+                            @endforeach
+                        </x-form.checkbox-group>
+                    </div>
                     @else
                         <x-form.input model="{{$c}}" type="{{getFieldType($c, $model)}}" name="{{$c}}" label="{{getFieldLabel($c, isName($c, $model))}}"/>
                     @endif
