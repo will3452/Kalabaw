@@ -65,7 +65,11 @@ class BinController extends Controller
             'Item' => [
                 'path' => '\\Modules\\Inventory\\Entities\\Item',
                 'label' => 'Item in Inventory'
-            ]
+            ],
+            'Inventory' => [
+                'path' => "\\Modules\\Inventory\\Entities\\Inventory",
+                'label' => 'Record of transactions',
+            ],
         ];
         if (!is_null($key)) {
             return $data[$key];

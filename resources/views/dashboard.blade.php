@@ -8,6 +8,7 @@
         }
         .metric {
             display: flex;
+            justify-content: space-between;
             background: #38B6FF;
         }
     </style>

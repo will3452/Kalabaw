@@ -39,6 +39,9 @@
                         <th style="font-size:14px;">{{getFieldLabel($c)}}</th>
                     @endif
                 @endforeach
+                @if ($label === "Item in Inventory")
+                    <th>BALANCE</th>
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -54,6 +57,11 @@
                         </td>
                     @endif
                 @endforeach
+                @if ($label === "Item in Inventory")
+                    <td>
+                        {{$f->balance()}}
+                    </td>
+                @endif
             </tr>
         @endforeach
         </tbody>

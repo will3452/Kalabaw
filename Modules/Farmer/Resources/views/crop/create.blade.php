@@ -67,10 +67,10 @@
                         @endif
 
                     @elseif(isCheckboxField($c, $model))
-                    <div class="row">!
+                    <div class="row">
                         <x-form.checkbox-group label="{{getFieldLabel($c)}}">
                             @foreach (getFieldsOption($c, $model) as $key=>$value)
-                                <div class="form-group clearfix">
+                                <div class="form-group">
                                     <label class="fancy-checkbox element-left">
                                         <input  type="checkbox" name="{{$c}}[]" value="{{$value}}">
                                         <span>{{$value}}</span>
