@@ -15,8 +15,16 @@
             margin-left: 1em !important;
         }
 
+        .footer {
+            display: flex;
+        }
+
+        .footer > div {
+            margin: 20px;
+        }
+
         th, td {
-            padding: 1em;
+            padding: 5px;
             border:1px solid #222;
         }
 
@@ -28,9 +36,9 @@
     </style>
 </head>
 <body>
-    <div style='display:flex;align-items:center;'>
+    <div style='display:flex;align-items:center;justify-content:center;'>
         <h1>
-            {{$label}}
+            List of {{$label}}
         </h1>
         <button class="hide" onclick="window.print()">print</button>
     </div>
@@ -56,8 +64,8 @@
                 </td>
                 @foreach ($columns as $c)
                     @if (! in_array($c, ['recorded_by_id']))
-                        <td style="font-size:14px;">
-                            {{getFieldValue($f, $c)}}
+                        <td style="font-size:14px;{{!isMoney($c, get_class($f)) ?:'text-align:right;'}}">
+                            {{isMoney($c, get_class($f)) ? getMoney(getFieldValue($f, $c)) :getFieldValue($f, $c)}}
                         </td>
                     @endif
                 @endforeach
@@ -70,5 +78,13 @@
         @endforeach
         </tbody>
     </table>
+    <div class="footer">
+        <div>
+            Prepared by: ___________________
+        </div>
+        <div>
+            Reviewed by: ___________________
+        </div>
+    </div>
 </body>
 </html>

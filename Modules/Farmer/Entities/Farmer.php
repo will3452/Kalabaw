@@ -31,6 +31,39 @@ class Farmer extends Model
         'spouse_last_name','spouse_first_name','spouse_middle_name',
     ];
 
+    public function getNameOfFarmerAttribute() {
+        $suffix = $this->suffix != '--' ? $this->suffix :'';
+        return "$this->last_name $suffix, $this->first_name $this->middle_name";
+    }
+
+
+    public function getNameOfSpouseAttribute() {
+        return "$this->spouse_last_name , $this->spouse_first_name $this->spouse_middle_name";
+    }
+
+    public function getBeneficiaryAttribute() {
+        return "$this->beneficiary_last_name , $this->beneficiary_first_name $this->beneficiary_middle_name";
+    }
+
+    const _TABLE = [
+            'name_of_farmer',
+            'barangay',
+            'gender',
+            'birth_date',
+            'contact_no',
+            'civil_status',
+            'association_id',
+            'name_of_spouse',
+            'occupation',
+            'other_source_of_income',
+            'beneficiary',
+            '4ps_family',
+            'annual_income_last_year_farming',
+            'annual_income_last_year_non_farming',
+            'recorded_by_id',
+            'status',
+    ];
+
     const _INLINES = [
         'association_id', 'gender','birth_date','barangay', 'contact_no', 'civil_status', 'occupation', 'other_source_of_income', '4ps_family','annual_income_last_year_farming', 'annual_income_last_year_non_farming'
     ];

@@ -105,6 +105,33 @@ class Fishermen extends Model
         return "$this->first_name $this->middle_name $this->last_name";
     }
 
+    public function getNameOfFishermenAttribute() {
+        $suffix = $this->suffix != '--' ? $this->suffix :'';
+        return "$this->last_name $suffix, $this->first_name $this->middle_name";
+    }
+
+
+    public function getNameOfSpouseAttribute() {
+        return "$this->spouse_last_name , $this->spouse_first_name $this->spouse_middle_name";
+    }
+
+    const _TABLE = [
+        'name_of_fishermen',
+        'suffix',
+        'barangay',
+        'contact_no',
+        'sex',
+        'association_id',
+        'highest_formal_education',
+        'name_of_spouse',
+        'occupation',
+        'other_source_of_income',
+        '4ps_family',
+        'birth_date',
+        'status',
+        'recorded_by_id',
+    ];
+
     const _COLUMNS = [
             'last_name',
             'first_name',

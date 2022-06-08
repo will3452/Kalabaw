@@ -24,7 +24,7 @@
                     <tr>
                         <td></td>
                         @foreach ($columns as $c)
-                            <td style="font-size:14px;">
+                            <td style="font-size:14px;{{!isMoney($c, get_class($f)) ?:'text-align:right;'}}">
                                 {{isMoney($c, get_class($f)) ? getMoney((float)$f[$c]) : $f[$c]}}
                             </td>
                         @endforeach

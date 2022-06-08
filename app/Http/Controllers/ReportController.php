@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
+use ReflectionClass;
 
 class ReportController extends Controller
 {
@@ -74,7 +76,15 @@ class ReportController extends Controller
         $modelClass = $this->getTypes($type);
         $label = $modelClass['label'];
         $data  = ($modelClass['path'])::get();
-        $columns = ($modelClass['path'])::_COLUMNS;
+
+        $rc = new ReflectionClass($modelClass['path']);
+
+        if ($rc->hasConstant('_TABLE')) {
+            $columns = ($modelClass['path'])::_TABLE;
+        } else {
+            $columns = ($modelClass['path'])::_COLUMNS;
+        }
+
         return view('generate-report', compact('data', 'columns', 'label'));
     }
 }
