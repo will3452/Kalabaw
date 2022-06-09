@@ -2,6 +2,8 @@
 
 namespace Modules\Association\Http\Controllers;
 
+use App\Models\User;
+use ReflectionClass;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Support\Renderable;
@@ -9,6 +11,23 @@ use Modules\Association\Entities\Association;
 
 class AssociationController extends Controller
 {
+    public function getMember (Request $request, Association $association) {
+        $request->validate(['type' => 'required']);
+        $type = $request->type;
+        $modelClass = getModel($type, $type);
+        $label = "$association->name members";
+        $data  = ($modelClass)::whereAssociationId($association->name)->get();
+
+        $rc = new ReflectionClass($modelClass);
+
+        if ($rc->hasConstant('_TABLE')) {
+            $columns = ($modelClass)::_TABLE;
+        } else {
+            $columns = ($modelClass)::_COLUMNS;
+        }
+
+        return view('generate-report', compact('data', 'columns', 'label'));
+    }
     public function getColumns()
     {
         $result = [];

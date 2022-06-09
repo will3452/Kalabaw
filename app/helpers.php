@@ -107,7 +107,7 @@ if ( ! function_exists('getFieldsOption')) {
             $associations = Association::whereGroupOf(end($modelArr))->get(['id', 'name', 'barangay']);
 
             foreach ($associations as $value) {
-                $result[$value['name'] . '-' . $value['barangay']] = $value['name'] . '-' . $value['barangay'];
+                $result[$value['name']] = $value['name'] . '-' . $value['barangay'];
             }
             return $result;
         }

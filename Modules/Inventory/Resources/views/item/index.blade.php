@@ -10,7 +10,7 @@
                 <tr>
                     <th>Date</th>
                     @foreach ($columns as $c)
-                        <th style="font-size:14px;">{{getFieldLabel($c)}}</th>
+                        <th style="font-size:8px;">{{getFieldLabel($c)}}</th>
                     @endforeach
                     <th>Balance</th>
                     <th>Total Cost</th>
@@ -30,7 +30,7 @@
                         <td>
                             {{$f->balance()}}
                         </td>
-                        <td>
+                        <td style="text-align:right;">
                             {{getMoney($f->totalCost())}}
                         </td>
                         <th>
@@ -58,7 +58,18 @@
                 bootbox.confirm("Are you sure you want to archive this record? ", (result) => !result ?'':$('#' + id).submit());
             }
             $(document).ready( function () {
-                $('#myTable').DataTable();
+                $('#myTable').DataTable({
+                    "columns":[
+                        null,
+                        null,
+                        null,
+                        {"width":"4%"},
+                        null,
+                        {"width":"20%"},
+                        null,
+                        {"width":"20%"}
+                    ]
+                });
             } );
         </script>
     @endpush

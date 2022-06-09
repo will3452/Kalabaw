@@ -17,6 +17,7 @@
 
         .footer {
             display: flex;
+            margin-top: 2em;
         }
 
         .footer > div {
@@ -84,10 +85,7 @@
     </table>
     <div class="footer">
         <div>
-            Received by: <span class="underlined">{{auth()->user()->name}}</span>
-        </div>
-        <div>
-            Prepared by: ___________________
+            Prepared by: <span class="underlined">{{auth()->user()->name}}</span>
         </div>
         <div>
             Reviewed by: <span class="underlined" contenteditable="true">[click me to edit]</span>
