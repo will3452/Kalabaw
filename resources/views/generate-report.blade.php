@@ -80,10 +80,13 @@
     </table>
     <div class="footer">
         <div>
+            Received by: <span class="underlined">{{auth()->user()->name}}</span>
+        </div>
+        <div>
             Prepared by: ___________________
         </div>
         <div>
-            Reviewed by: ___________________
+            Reviewed by: <span class="underlined" editable>[edit name]</span>
         </div>
     </div>
 </body>
