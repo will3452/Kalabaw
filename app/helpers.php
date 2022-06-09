@@ -71,6 +71,10 @@ if ( ! function_exists('getFieldLabel')) {
 if (! function_exists('isMoney')) {
     function isMoney($c, $model): bool
     {
+        $obj = new ReflectionObject($model);
+        if (! $obj->hasConstant('_MONEY')) {
+            return false;
+        }
         return in_array($c, $model::_MONEY);
     }
 }
