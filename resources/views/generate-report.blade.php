@@ -86,7 +86,7 @@
             Prepared by: ___________________
         </div>
         <div>
-            Reviewed by: <span class="underlined" contenteditable="true">[edit name]</span>
+            Reviewed by: <span class="underlined" contenteditable="true">[click me to edit]</span>
         </div>
     </div>
 </body>
