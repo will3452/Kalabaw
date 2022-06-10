@@ -62,7 +62,7 @@
                     "columns":[
                         null,
                         null,
-                        null,
+                        {"width":"20%"},
                         {"width":"4%"},
                         null,
                         {"width":"20%"},
