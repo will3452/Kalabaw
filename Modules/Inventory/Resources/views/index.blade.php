@@ -14,6 +14,7 @@
                     @endforeach
                     <th>Added By</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,9 @@
                         </th>
                         <th>
                             <a class="btn btn-sm btn-primary" href="{{route('inventory.edit', ['inventory' => $f->id])}}">EDIT</a>
+
+                        </th>
+                        <th>
                             <button class="btn btn-sm btn-danger" onclick="submitDeleteForm('formdelete{{$f->id}}')">ARCHIVE</button>
                             <form style="display:inline;" action="{{route('inventory.delete', ['inventory' => $f->id])}}" method="POST" id="formdelete{{$f->id}}">
                                 @csrf @method('DELETE')
