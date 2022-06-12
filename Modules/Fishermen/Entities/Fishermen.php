@@ -117,19 +117,6 @@ class Fishermen extends Model
 
     const _TABLE = [
         'name_of_fishermen',
-        'suffix',
-        'barangay',
-        'contact_no',
-        'sex',
-        'association_id',
-        'highest_formal_education',
-        'name_of_spouse',
-        'occupation',
-        'other_source_of_income',
-        '4ps_family',
-        'birth_date',
-        'status',
-        'recorded_by_id',
     ];
 
     const _COLUMNS = [

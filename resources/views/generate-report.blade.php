@@ -69,7 +69,7 @@
                 </td>
                 @foreach ($columns as $c)
                     @if (! in_array($c, ['recorded_by_id']))
-                        <td style="font-size:14px;{{!isMoney($c, get_class($f)) ?:'text-align:right;'}}">
+                        <td style="font-size:18px;{{!isMoney($c, get_class($f)) ?:'text-align:right;'}}">
                             {{isMoney($c, get_class($f)) ? getMoney(getFieldValue($f, $c)) :getFieldValue($f, $c)}}
                         </td>
                     @endif

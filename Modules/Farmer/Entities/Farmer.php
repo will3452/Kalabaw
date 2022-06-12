@@ -47,21 +47,6 @@ class Farmer extends Model
 
     const _TABLE = [
             'name_of_farmer',
-            'barangay',
-            'gender',
-            'birth_date',
-            'contact_no',
-            'civil_status',
-            'association_id',
-            'name_of_spouse',
-            'occupation',
-            'other_source_of_income',
-            'beneficiary',
-            '4ps_family',
-            'annual_income_last_year_farming',
-            'annual_income_last_year_non_farming',
-            'recorded_by_id',
-            'status',
     ];
 
     const _INLINES = [
