@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\Barangay\Entities\Barangay;
 use Modules\UserManagement\Entities\Traits\ApprovalTrait;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -22,6 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'first_name',
         'last_name',
         'email',
+        'barangay_id',
         'password',
         'type',
         'approved_at',
@@ -39,6 +41,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getNameAttribute()
     {
         return "$this->first_name $this->last_name";
+    }
+
+    public function barangay () {
+        return $this->belongsTo(Barangay::class);
     }
 
     public function title () {

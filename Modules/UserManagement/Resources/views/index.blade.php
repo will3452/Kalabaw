@@ -24,6 +24,9 @@
                     <th>
                         Email
                     </th>
+                    <th>
+                        Assigned Barangay
+                    </th>
                     <td>
                         Date Approved
                     </td>
@@ -48,6 +51,9 @@
                     </td>
                     <td>
                         {{$user->email}}
+                    </td>
+                    <td>
+                        {{$user->barangay ? $user->barangay->name: 'All'}}
                     </td>
                     <td>
                         {{$user->approved_at ?? '--'}}

@@ -124,7 +124,7 @@ if ( ! function_exists('getFieldsOption')) {
         }
         $locations = ['barangay', 'farm_location'];
         if (in_array($c, $locations)) {
-            return Barangay::get()->pluck('name', 'name')->toArray();
+            return auth()->user()->barangay_id ? Barangay::whereId(auth()->user()->barangay_id)->get()->pluck('name', 'name')->toArray() : Barangay::get()->pluck('name', 'name')->toArray();
         }
 
         if ($c == 'unit_of_measurement') {

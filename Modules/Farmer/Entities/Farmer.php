@@ -83,6 +83,7 @@ class Farmer extends Model
     const _EXCLUDE_TO_FORM = [
         'recorded_by_id',
         'status',
+        // 'barangay',
     ];
 
     const _SELECT = [

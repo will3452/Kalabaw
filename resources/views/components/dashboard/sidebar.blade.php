@@ -89,6 +89,9 @@
                 <x-dashboard.sidebar-link href="/reports" icon="lnr lnr-printer" active="{{isActive(route('report'))}}">
                     Reports
                 </x-dashboard.sidebar-link>
+                <x-dashboard.sidebar-link href="{{route('auth.logout')}}" icon="lnr lnr-exit" active="{{false}}">
+                    Logout
+                </x-dashboard.sidebar-link>
             </ul>
         </nav>
     </div>

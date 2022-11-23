@@ -47,6 +47,7 @@ class UserManagementController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
+            'barangay_id' => '',
             'email' => ['required', 'unique:users,email'],
             'password' => ['min:8', 'required', 'confirmed'],
             'first_name' => ['required'],

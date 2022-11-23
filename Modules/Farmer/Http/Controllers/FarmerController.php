@@ -2,10 +2,11 @@
 
 namespace Modules\Farmer\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Farmer\Entities\Farmer;
+use Modules\Barangay\Entities\Barangay;
+use Illuminate\Contracts\Support\Renderable;
 
 class FarmerController extends Controller
 {
@@ -30,7 +31,15 @@ class FarmerController extends Controller
      */
     public function index(Request $request)
     {
-        $farmers = Farmer::get();
+        $barangay = auth()->user()->barangay_id;
+        $farmers = [];
+
+        if (! $barangay) {
+            $farmers = Farmer::get();
+        } else {
+            $barangay = Barangay::find($barangay)->name;
+            $farmers = Farmer::whereBarangay($barangay)->get();
+        }
         $columns = $this->getColumns();
         return view('farmer::index', compact('columns', 'farmers'))->withSuccess($request->success ?? null);
     }

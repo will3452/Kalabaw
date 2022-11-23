@@ -5,6 +5,7 @@ namespace Modules\Fishermen\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Barangay\Entities\Barangay;
 use Modules\Fishermen\Entities\Fishermen;
 
 class FishermenController extends Controller
@@ -26,7 +27,16 @@ class FishermenController extends Controller
      */
     public function index(Request $request)
     {
-        $fishermens = Fishermen::get();
+        $barangay = auth()->user()->barangay_id;
+        $fishermens = [];
+
+        if (! $barangay) {
+            $fishermens = Fishermen::get();
+        } else {
+            $barangay = Barangay::find($barangay)->name;
+            $fishermens = Fishermen::whereBarangay($barangay)->get();
+        }
+
         $columns = $this->getColumns();
         return view('fishermen::index', compact('columns', 'fishermens'))->withSuccess($request->success ?? null);
     }
