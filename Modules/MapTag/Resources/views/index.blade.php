@@ -14,13 +14,8 @@
     @endpush
     @push('body-script')
     <script>
-        var map = L.map('map').setView([17.5704898, 120.38732989999994], 10);
-        map.fitBounds([
-            [17.632274025635304,
-            120.68309811436166,],
-            [17.50134921102499,
-            120.33702877842417,]
-        ]);
+        var map = L.map('map').setView([16.9753758, 121.81070790000001], 10);
+
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                 attribution: '',
                 maxZoom: 42,
