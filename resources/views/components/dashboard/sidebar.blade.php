@@ -28,7 +28,7 @@
                     </x-dashboard.sidebar-link>
                 @endif
 
-                @if (hasModule('Farmer') && auth()->user()->type !== \App\Models\User::TYPE_ADMIN)
+                @if (hasModule('Farmer') && auth()->user()->type == \App\Models\User::TYPE_ADMIN)
                     <li>
                         <a href="#farmers" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Farmers</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                         <div id="farmers" class="collapse ">
@@ -43,7 +43,7 @@
                     </li>
                 @endif
 
-                @if (hasModule('Fishermen') && ! auth()->user()->is(\App\Models\User::TYPE_ADMIN))
+                @if (hasModule('Fishermen') &&  auth()->user()->is(\App\Models\User::TYPE_ADMIN))
                     <li>
                         <a href="#fishermens" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Fishermen</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                         <div id="fishermens" class="collapse ">
@@ -68,7 +68,7 @@
                     </li>
                 @endif
 
-                @if (hasModule('Bin') && ! auth()->user()->is(\App\Models\User::TYPE_ADMIN))
+                @if (hasModule('Bin') && auth()->user()->is(\App\Models\User::TYPE_ADMIN))
                     <x-dashboard.sidebar-link href="{{route('bin.index')}}" icon="lnr lnr-history" active="{{isActive(route('bin.index'))}}">
                         Archive
                     </x-dashboard.sidebar-link>

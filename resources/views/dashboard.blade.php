@@ -82,7 +82,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-3">
+                {{-- <div class="col-md-3">
                     <div class="metric">
                         <img src="/icons/Trees.png" alt="" class="icons">
                         <p>
@@ -90,7 +90,7 @@
                             <span class="title">Trees</span>
                         </p>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-md-3">
                     <div class="metric">
                         <img src="/icons/Livestock.png" alt="" class="icons">

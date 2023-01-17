@@ -14,6 +14,7 @@ class Farmer extends Model
 
     const _DISPLAY = [
         "Personal" => [
+            ['reference_number'],
             ['last_name', 'first_name', 'middle_name'],
             ['gender', 'birth_date'],
             ['barangay', 'contact_no'],
@@ -55,6 +56,7 @@ class Farmer extends Model
 
 
     protected $fillable = [
+        'reference_number',
         'first_name',
         'last_name',
         'suffix',
@@ -140,6 +142,7 @@ class Farmer extends Model
     ];
 
     const _COLUMNS = [
+            'reference_number',
             'last_name',
             'first_name',
             'middle_name',
