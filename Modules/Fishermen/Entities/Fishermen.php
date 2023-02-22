@@ -92,7 +92,6 @@ class Fishermen extends Model
         'barangay' => [],
         'civil_status' => [
             'single' => 'Single',
-            'engaged' => 'Engaged',
             'married' => 'Married',
             'separated' => 'Separated',
             'divorced' => 'Divorced',

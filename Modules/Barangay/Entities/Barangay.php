@@ -12,6 +12,10 @@ class Barangay extends Model
 
     protected $fillable = [
         'name',
+        'code',
+        'region_code',
+        'province_code',
+        'municipality_code',
         'longitude',
         'latitude',
         'recorded_by_id',
@@ -29,6 +33,10 @@ class Barangay extends Model
 
     const _COLUMNS = [
         'name',
+        'code',
+        'region_code',
+        'province_code',
+        'municipality_code',
         'longitude',
         'latitude',
         'recorded_by_id',

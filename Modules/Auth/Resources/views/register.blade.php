@@ -4,7 +4,7 @@
         <div class="form-group text-left">
             <label for="br" class="control-label">Designated Barangay</label>
             <select name="barangay_id" id="br" class="form-control">
-                @foreach (\Modules\Barangay\Entities\Barangay::get() as $item)
+                @foreach ($barangays as $item)
                     <option value="{{$item->id}}">{{$item->name}}</option>
                 @endforeach
             </select>

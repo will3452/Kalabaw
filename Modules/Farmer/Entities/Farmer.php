@@ -2,11 +2,12 @@
 
 namespace Modules\Farmer\Entities;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Barangay\Entities\Barangay;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Farmer extends Model
 {
@@ -16,7 +17,7 @@ class Farmer extends Model
         "Personal" => [
             ['reference_number'],
             ['last_name', 'first_name', 'middle_name'],
-            ['gender', 'birth_date'],
+            ['sex', 'birth_date'],
             ['barangay', 'contact_no'],
             ['civil_status', 'occupation'],
             ['spouse_last_name', 'spouse_first_name', 'spouse_middle_name'],
@@ -51,7 +52,7 @@ class Farmer extends Model
     ];
 
     const _INLINES = [
-        'association_id', 'gender','birth_date','barangay', 'contact_no', 'civil_status', 'occupation', 'other_source_of_income', '4ps_family','annual_income_last_year_farming', 'annual_income_last_year_non_farming'
+        'association_id', 'sex','birth_date','barangay', 'contact_no', 'civil_status', 'occupation', 'other_source_of_income', '4ps_family','annual_income_last_year_farming', 'annual_income_last_year_non_farming'
     ];
 
 
@@ -63,7 +64,7 @@ class Farmer extends Model
         'middle_name',
         'barangay',
         'contact_no',
-        'gender',
+        'sex',
         'civil_status',
         'spouse_last_name',
         'spouse_first_name',
@@ -85,6 +86,7 @@ class Farmer extends Model
     const _EXCLUDE_TO_FORM = [
         'recorded_by_id',
         'status',
+        'reference_number',
         // 'barangay',
     ];
 
@@ -92,7 +94,7 @@ class Farmer extends Model
         'suffix',
         '4ps_family',
         'association_id',
-        'gender',
+        'sex',
         'barangay',
         'civil_status',
     ];
@@ -116,15 +118,14 @@ class Farmer extends Model
             'yes' => 'Yes',
             'no' => 'No',
         ],
-        'gender' => [
+        'sex' => [
             'male' => 'Male',
             'female' => 'Female'
         ],
         'barangay' => [],
         'civil_status' => [
-            'single' => 'Single',
-            'engaged' => 'Engaged',
             'married' => 'Married',
+            'single' => 'Single',
             'separated' => 'Separated',
             'divorced' => 'Divorced',
             'widowed' => 'Windowed',
@@ -148,7 +149,7 @@ class Farmer extends Model
             'middle_name',
             'suffix',
             'barangay',
-            'gender',
+            'sex',
             'birth_date',
             'contact_no',
             'civil_status',
@@ -198,6 +199,15 @@ class Farmer extends Model
         parent::boot();
         static::creating(function ($model) {
             $model->recorded_by_id = auth()->id();
+            $barangay = auth()->user()->barangay;
+            $latest = static::whereBarangay($barangay->name)->latest()->first();
+
+            if (! $latest) {
+                $latest = 0;
+            } else {
+                $latest = $latest->id;
+            }
+            $model->reference_number = $barangay->region_code."-".$barangay->province_code."-".$barangay->municipality_code."-".$barangay->code."-" . Str::padLeft(($latest + 1), 4, '0');
         });
 
         static::deleted(function ($model) {

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>{{config('app.name')}}</title>
+	<title>AgriAssistance</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -34,6 +34,8 @@
 		<div class="main">
             <div class="main-content">
 				<div class="container-fluid">
+                    <x-breadcrumb></x-breadcrumb>
+                    {{-- {{pathinfo("".url()->current())}} --}}
                     @if (session()->has('success'))
                         <div class="alert alert-success">
                             {{session()->get('success')}}

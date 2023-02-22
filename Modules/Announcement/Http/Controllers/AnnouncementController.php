@@ -2,6 +2,7 @@
 
 namespace Modules\Announcement\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Support\Renderable;
@@ -51,7 +52,7 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        $announcements = Announcement::get();
+        $announcements = Announcement::whereUserId(auth()->id())->get();
         $columns = $this->getColumns();
         return view('announcement::index', compact('columns', 'announcements'));
     }
@@ -87,10 +88,13 @@ class AnnouncementController extends Controller
             $mobile = Farmer::get(['contact_no'])->pluck('contact_no');
         } else if ($data['for'] == 'fishermen') {
             $mobile = Fishermen::get(['contact_no'])->pluck('contact_no');
+        }else if ($data['for'] == 'user') {
+            $mobile = User::get(['phone'])->pluck('phone');
         } else {
+            $users = User::get(['phone'])->pluck('phone')->toArray();
             $farmers = Farmer::get(['contact_no'])->pluck('contact_no')->toArray();
             $fishermen = Fishermen::get(['contact_no'])->pluck('contact_no')->toArray();
-            $raw = array_merge($farmers, $fishermen);
+            $raw = array_merge($farmers, $fishermen, $users);
             $mobile = array_unique($raw);
         }
         foreach ($mobile as $f) {

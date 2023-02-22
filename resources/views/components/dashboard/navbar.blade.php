@@ -1,16 +1,23 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid " >
+
+
         <div class="navbar-btn">
             <button type="button" class="btn-toggle-fullwidth" ><i title="Hide/Show Sidebar" class="lnr lnr-arrow-left-circle"></i> </button>
 
         </div>
+        <h1 class="navbar-btn">
+            AgriAssistance
+        </h1>
         @if (hasModule('Searchbar'))
             <x-searchbar></x-searchbar>
         @endif
 
+
         <div id="navbar-menu">
             <ul class="nav navbar-nav navbar-right">
+
 
                 @if (hasModule('Notification'))
                     <x-notification></x-notification>

@@ -1,0 +1,57 @@
+<x-dashboard.layout>
+    <x-panel title="Register New Farm">
+        <form
+            action="{{route('crop.store')}}"
+            method="POST"
+            x-data="{
+                @foreach ($columns as $c)
+                {{$c}}:'',
+                @endforeach
+                setName() {
+                    console.log('hell world')
+                    if (this.tenure_type == 'owned') {
+                        let name = this.farmer_id.split('***')[1]
+                        let arrayName = name.split('---')
+                        this.land_owner_first_name = arrayName[0];
+                        this.land_owner_middle_name = arrayName[1];
+                        this.land_owner_last_name = arrayName[2];
+                    } else {
+                        this.land_owner_first_name = '';
+                        this.land_owner_middle_name = '';
+                        this.land_owner_last_name = '';
+                    }
+                }
+            }"
+        >
+            @csrf
+            <div class="row">
+                <div class="col-md-3">
+                    <x-form.select name="farmer_id" label="Farmer">
+                        @foreach (\Modules\Farmer\Entities\Farmer::get() as $farmer)
+                            <option value="{{$farmer->id}}">{{$farmer->last_name}}, {{$farmer->first_name}}</option>
+                        @endforeach
+                    </x-form.select>
+                </div>
+
+                <div class="col-md-3">
+                    <x-form.select name="farm_location" label="Farm Location">
+                        @foreach (\Modules\Barangay\Entities\Barangay::get() as $barangay)
+                            <option value="{{$barangay->name}}">{{$barangay->name}}</option>
+                        @endforeach
+                    </x-form.select>
+                </div>
+            </div>
+            <div class="row"></div>
+            <button class="btn btn-primary">Submit</button>
+        </form>
+    </x-panel>
+    @push('body-script')
+        {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script>
+            $(function () {
+                $('.select2').select2();
+            })
+        </script> --}}
+    @endpush
+</x-dashboard.layout>

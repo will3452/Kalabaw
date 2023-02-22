@@ -36,6 +36,7 @@ class Announcement extends Model
             'all' => 'all',
             'farmers' => 'farmers',
             'fishermen' => 'fishermen',
+            'user' => 'user',
         ],
     ];
 

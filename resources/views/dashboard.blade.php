@@ -18,106 +18,44 @@
             <p class="panel-subtitle">Date Today: {{now()->format('m-d-y')}}</p>
         </div>
         <div class="panel-body">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="metric">
-                        <img src="/icons/Accounts.png" alt="" class="icons">
-                        <p>
-                            <span class="number">{{\App\Models\User::count()}}</span>
-                            <span class="title">Accounts</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="metric">
-                        <img src="/icons/Farmer.png" alt="" class="icons">
-                        <p>
-                            <span class="number">{{\Modules\Farmer\Entities\Farmer::count()}}</span>
-                            <span class="title">Farmers</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="metric">
-                        <img src="/icons/Fisherman.png" alt="" class="icons">
-                        <p>
-                            <span class="number">{{ \Modules\Fishermen\Entities\Fishermen::count() }}</span>
-                            <span class="title">Fishermen</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="metric">
-                        <img src="/icons/Inventory.png" alt="" class="icons">
-                        <p>
-                            <span class="number">{{\Modules\Inventory\Entities\Item::whereHas('inventories')->count()}}</span>
-                            <span class="title" style="font-size:16px;">Inventory Items</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="metric">
-                        <img src="/icons/Announcement.png" alt="" class="icons">
-                        <p>
-                            <span class="number">{{\Modules\Announcement\Entities\Announcement::count()}}</span>
-                            <span class="title">Announcments</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="metric">
-                        <img src="/icons/Barangay.png" alt="" class="icons">
-                        <p>
-                            <span class="number">{{\Modules\Barangay\Entities\Barangay::count()}}</span>
-                            <span class="title">Barangay</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="metric">
-                        <img src="/icons/Farm.png" alt="" class="icons">
-                        <p>
-                            <span class="number">{{\Modules\Farmer\Entities\Crop::count()}}</span>
-                            <span class="title">Farms</span>
-                        </p>
-                    </div>
-                </div>
-                {{-- <div class="col-md-3">
-                    <div class="metric">
-                        <img src="/icons/Trees.png" alt="" class="icons">
-                        <p>
-                            <span class="number">{{\Modules\Farmer\Entities\Tree::count()}}</span>
-                            <span class="title">Trees</span>
-                        </p>
-                    </div>
-                </div> --}}
-                <div class="col-md-3">
-                    <div class="metric">
-                        <img src="/icons/Livestock.png" alt="" class="icons">
-                        <p>
-                            <span class="number">{{\Modules\Farmer\Entities\LivestockOrPoultry::count()}}</span>
-                            <span class="title" style="font-size:9px;">Livestock/Poultry</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="metric">
-                        <img src="/icons/Machinery.png" alt="" class="icons">
-                        <p>
-                            <span class="number">{{\Modules\Farmer\Entities\MachineAndEquipment::count()}}</span>
-                            <span class="title" style="font-size:9px;">Machineries/Equipment</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="metric">
-                        <img src="/icons/Area.png" alt="" class="icons">
-                        <p>
-                            <span class="number">{{\Modules\Fishermen\Entities\Area::count()}}</span>
-                            <span class="title">Area</span>
-                        </p>
-                    </div>
-                </div>
+            <div style="display:flex; flex-wrap:wrap; width:100%;">
+                <x-for-admin>
+                    <x-metric name="Accounts" icon="/icons/Accounts.png" count="{{\App\Models\User::count()}}" link="/usermanagement"></x-metric>
+                </x-for-admin>
+
+                <x-metric icon="/icons/Farmer.png" name="Farmers" count="{{auth()->user()->getCountOf(\Modules\Farmer\Entities\Farmer::class)}}" link="/farmer"></x-metric>
+
+                <x-metric
+                    icon="/icons/Fisherman.png"
+                    name="Fishermen"
+                    count="{{ auth()->user()->getCountOf(\Modules\Fishermen\Entities\Fishermen::class)}}"
+                    link="/fishermens">
+                </x-metric>
+
+                <x-for-admin>
+                    <x-metric
+                        icon="/icons/Inventory.png"
+                        name="Inventories"
+                        count="{{ \Modules\Inventory\Entities\Item::whereHas('inventories')->count()}}"
+                        link="/inventory-items">
+                    </x-metric>
+                </x-for-admin>
+
+                <x-metric
+                    icon="/icons/Announcement.png"
+                    name="Announcements"
+                    count="{{ \Modules\Announcement\Entities\Announcement::count()}}"
+                    link="/announcement">
+                </x-metric>
+
+                <x-for-admin>
+                    <x-metric
+                        icon="/icons/Barangay.png"
+                        name="Barangays"
+                        count="{{\Modules\Barangay\Entities\Barangay::count()}}"
+                        link="/barangay">
+                    </x-metric>
+                </x-for-admin>
             </div>
         </div>
     </div>

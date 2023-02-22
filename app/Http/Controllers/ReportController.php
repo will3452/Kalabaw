@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use ReflectionClass;
@@ -75,7 +76,12 @@ class ReportController extends Controller
         $modelType = $type;
         $modelClass = $this->getTypes($type);
         $label = $modelClass['label'];
+
         $data  = ($modelClass['path'])::get();
+
+        if (in_array($type, ['Farmer', 'Fishermen']) && auth()->user()->type != User::TYPE_ADMIN) {
+            $data  = ($modelClass['path'])::whereBarangay(auth()->user()->barangay->name)->get();
+        }
 
         $rc = new ReflectionClass($modelClass['path']);
 

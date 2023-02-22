@@ -5,8 +5,9 @@ namespace Modules\Auth\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Support\Renderable;
 
 class AuthController extends Controller
 {
@@ -49,7 +50,11 @@ class AuthController extends Controller
 
     public function showRegisterForm()
     {
-        return view('auth::register');
+        $excludes = \App\Models\User::whereNotNull('barangay_id')->select('barangay_id')->get()->pluck('barangay_id');
+
+        $barangays = DB::table('barangays')->whereNotIn('id', $excludes)->get();
+
+        return view('auth::register', compact('barangays'));
     }
 
     public function register(Request $request)

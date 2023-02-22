@@ -47,6 +47,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Barangay::class);
     }
 
+    public function getCountOf($model) {
+        if ($this->type == self::TYPE_ADMIN) {
+            return $model::count();
+        }
+
+        return $model::whereBarangay($this->barangay->name)->count();
+    }
+
     public function title () {
         return $this->name;
     }

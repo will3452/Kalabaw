@@ -28,32 +28,28 @@
                     </x-dashboard.sidebar-link>
                 @endif
 
-                @if (hasModule('Farmer') && auth()->user()->type == \App\Models\User::TYPE_ADMIN)
-                    <li>
-                        <a href="#farmers" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Farmers</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                        <div id="farmers" class="collapse ">
-                            <ul class="nav ">
-                                <li><a href="{{route('farmer.index')}}">Profiles</a></li>
-                                <li><a href="{{route('crop.index')}}">Farm</a></li>
-                                <li><a href="{{route('mae.index')}}">Machineries and Equipment</a></li>
-                                <li><a href="{{route('tree.index')}}">Trees</a></li>
-                                <li><a href="{{route('lop.index')}}">Livestock or Poultry</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                @endif
+                <li>
+                    <a href="#farmers" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Farmers</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                    <div id="farmers" class="collapse ">
+                        <ul class="nav ">
+                            <li><a href="{{route('farmer.index')}}">Profiles</a></li>
+                            <li><a href="{{route('crop.index')}}">Farm</a></li>
+                            <li><a href="{{route('mae.index')}}">Machineries and Equipment</a></li>
+                            <li><a href="{{route('tree.index')}}">Trees</a></li>
+                            <li><a href="{{route('lop.index')}}">Livestock or Poultry</a></li>
+                        </ul>
+                    </div>
+                </li>
 
-                @if (hasModule('Fishermen') &&  auth()->user()->is(\App\Models\User::TYPE_ADMIN))
-                    <li>
-                        <a href="#fishermens" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Fishermen</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                        <div id="fishermens" class="collapse ">
-                            <ul class="nav ">
-                                <li><a href="{{route('fishermen.index')}}">Profiles</a></li>
-                                <li><a href="{{route('area.index')}}">Areas</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                @endif
+                <li>
+                    <a href="#fishermens" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database"></i> <span>Fishermen</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                    <div id="fishermens" class="collapse ">
+                        <ul class="nav ">
+                            <li><a href="{{route('fishermen.index')}}">Profiles</a></li>
+                            <li><a href="{{route('area.index')}}">Areas</a></li>
+                        </ul>
+                    </div>
+                </li>
 
                 @if (hasModule('Inventory'))
                     <li>

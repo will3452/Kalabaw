@@ -55,7 +55,7 @@
                         @if (request()->has('farmer') && $c == 'farmer_id')
                         <div style="margin-bottom: 1em;">
                             Farmer: {{\Modules\Farmer\Entities\Farmer::find(request()->farmer)->title()}}
-                            <input type="hidden" name="farmer_id" value="{{request()->farmer}}" />
+                            <input model="{{$c}}" type="hidden" name="farmer_id" value="{{request()->farmer}}" />
                         </div>
                         @else
                             <x-form.select model="{{$c}}" name="{{$c}}" label="{{getFieldLabel($c)}}">
