@@ -2,9 +2,10 @@
 
 namespace Modules\Fishermen\Entities;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Fishermen extends Model
 {
@@ -13,6 +14,7 @@ class Fishermen extends Model
 
     const _DISPLAY = [
         "Personal" => [
+            ["reference_number"],
             ['last_name', 'first_name', 'middle_name'],
             ['sex', 'birth_date'],
             ['barangay', 'contact_no'],
@@ -26,6 +28,7 @@ class Fishermen extends Model
     const _MONEY = [];
 
     protected $fillable = [
+        'reference_number',
         'first_name',
         'last_name',
         'middle_name',
@@ -49,7 +52,8 @@ class Fishermen extends Model
     const _EXCLUDE_TO_FORM = [
         'recorded_by_id',
         'status',
-        'barangay',
+        // 'barangay',
+        'reference_number',
     ];
 
     const _SELECT = [
@@ -116,10 +120,12 @@ class Fishermen extends Model
     }
 
     const _TABLE = [
+        'reference_number',
         'name_of_fishermen',
     ];
 
     const _COLUMNS = [
+            'reference_number',
             'last_name',
             'first_name',
             'middle_name',
@@ -149,6 +155,17 @@ class Fishermen extends Model
         parent::boot();
         static::creating(function ($model) {
             $model->recorded_by_id = auth()->id();
+
+
+            $barangay = auth()->user()->barangay;
+            $latest = static::whereBarangay($barangay->name)->latest()->first();
+
+            if (! $latest) {
+                $latest = 0;
+            } else {
+                $latest = $latest->id;
+            }
+            $model->reference_number = $barangay->region_code."-".$barangay->province_code."-".$barangay->municipality_code."-".$barangay->code."-" . Str::padLeft(($latest + 1), 4, '0');
         });
 
         static::deleted(function ($model) {

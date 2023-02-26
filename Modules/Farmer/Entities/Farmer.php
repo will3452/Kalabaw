@@ -48,6 +48,7 @@ class Farmer extends Model
     }
 
     const _TABLE = [
+        'reference_number',
             'name_of_farmer',
     ];
 

@@ -8,7 +8,7 @@
         <table id="myTable">
             <thead>
                 <tr>
-                    <th>No.</th>
+                    <th>Reference No.</th>
                     @foreach ($columns as $c)
                         <th style="font-size:14px;">{{Str::upper(implode(' ', explode('_', $c)))}}</th>
                     @endforeach
@@ -22,7 +22,7 @@
             <tbody>
                 @foreach ($farmers as $index=>$f)
                     <tr>
-                        <td></td>
+                        <td>{{$f->reference_number}}</td>
                         @foreach ($columns as $c)
                             <td style="font-size:14px;{{!isMoney($c, get_class($f)) ?:'text-align:right;'}}">
                                 {{isMoney($c, get_class($f)) ? getMoney((float)$f[$c]) : $f[$c]}}
@@ -95,11 +95,11 @@
                         order: [[ 1, 'asc' ]],
                         fixedColumns: true
                     });
-                    table.on( 'order.dt search.dt', function () {
-                        table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                            cell.innerHTML = i+1;
-                        } );
-                    } ).draw();
+                    // table.on( 'order.dt search.dt', function () {
+                    //     table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                    //         cell.innerHTML = i+1;
+                    //     } );
+                    // } ).draw();
             } );
         </script>
     @endpush

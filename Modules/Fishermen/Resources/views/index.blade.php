@@ -9,7 +9,7 @@
             <thead>
                 <tr>
 
-                <th>No</th>
+                <th>Reference No.</th>
                     @foreach ($columns as $c)
                     <th style="font-size:14px;">{{getFieldLabel($c)}}</th>
                 @endforeach
@@ -22,7 +22,7 @@
             <tbody>
                 @foreach ($fishermens as $index=>$f)
                     <tr>
-                        <td></td>
+                        <td>{{$f->reference_number}}</td>
                         @foreach ($columns as $c)
                             <td style="font-size:14px;">
                                 {{$f[$c]}}
@@ -93,11 +93,11 @@
                         order: [[ 1, 'asc' ]],
                         fixedColumns: true
                     });
-                    table.on( 'order.dt search.dt', function () {
-                        table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                            cell.innerHTML = i+1;
-                        } );
-                    } ).draw();
+                    // table.on( 'order.dt search.dt', function () {
+                    //     table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                    //         cell.innerHTML = i+1;
+                    //     } );
+                    // } ).draw();
             } );
         </script>
     @endpush

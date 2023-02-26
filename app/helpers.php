@@ -114,7 +114,7 @@ if ( ! function_exists('getFieldsOption')) {
 
         if ($c == 'farmer_id') {
             $result = [];
-            $farmers = Farmer::get(['id', 'first_name', 'last_name', 'middle_name']);
+            $farmers = Farmer::whereBarangay(auth()->user()->barangay->name)->get(['id', 'first_name', 'last_name', 'middle_name']);
             foreach ($farmers as $value) {
                 $key = $value['id'] . '***' . implode('---', [$value['first_name'], $value['middle_name'], $value['last_name']]);
                 $result[$key] = $value['first_name'] . " " . $value['middle_name'] . " " . $value['last_name'];
@@ -137,7 +137,7 @@ if ( ! function_exists('getFieldsOption')) {
 
         if ($c == 'fishermen_id') {
             $result = [];
-            $fishermens = Fishermen::get(['id', 'first_name', 'last_name', 'middle_name']);
+            $fishermens = Fishermen::whereBarangay(auth()->user()->barangay->name)->get(['id', 'first_name', 'last_name', 'middle_name']);
             foreach ($fishermens as $value) {
                 $key = $value['id'] . '***' . implode('---', [$value['first_name'], $value['middle_name'], $value['last_name']]);
                 $result[$key] = $value['first_name'] . " " . $value['middle_name'] . " " . $value['last_name'];
