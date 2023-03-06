@@ -7,9 +7,9 @@
             <button type="button" class="btn-toggle-fullwidth" ><i title="Hide/Show Sidebar" class="lnr lnr-arrow-left-circle"></i> </button>
 
         </div>
-        <h1 class="navbar-btn">
-            AgriAssistance
-        </h1>
+        <h3 class="navbar-btn">
+            AgriAssistance: A Secure Farmers' Information Management in Implementing RSBSA
+        </h3>
         @if (hasModule('Searchbar'))
             <x-searchbar></x-searchbar>
         @endif

@@ -37,10 +37,10 @@ class Crop extends Model
         'land_owner_last_name',
         'land_owner_first_name',
         'land_owner_middle_name',
-        'crop_or_commodities',
         'size',
         'organically_grown',
         'source_of_water',
+        'crop_or_commodities',
     ];
 
     const _NAMES = [
@@ -62,6 +62,7 @@ class Crop extends Model
 
     const _CHECKBOX = [
         'source_of_water',
+        'crop_or_commodities',
     ];
 
     const _OPTIONS = [
@@ -77,6 +78,17 @@ class Crop extends Model
             'deep well' => 'deep well',
             'tube well' => 'tube well',
         ],
+        'crop_or_commodities' => [
+            'rice' => 'rice',
+            'corn' => 'corn',
+            'coconut' => 'coconut',
+            'sugarcane' => 'sugarcane',
+            'bananas' => 'bananas',
+            'pineapple' => 'pineapple',
+            'coffee' => 'coffee',
+            'mangoes' => 'mangoes',
+            'tobacco' => 'tobacco',
+        ]
     ];
 
     public function title($map = false)

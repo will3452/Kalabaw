@@ -57,6 +57,7 @@ class CropController extends Controller
         $data = $request->validate($fieldsToValidate);
         $data['farmer_id'] = explode('***', $data['farmer_id'])[0];
         $data['source_of_water'] = json_encode($data['source_of_water']);
+        $data['crop_or_commodities'] = json_encode($data['crop_or_commodities']);
         $crop = Crop::create($data);
         return redirect(route('maptag.create', ['edit' => 1, 'id' => $crop->id, 'type' => 'Crop', 'module' => 'Farmer']))->withSuccess('The farm has been added! Pin to map now');
     }
